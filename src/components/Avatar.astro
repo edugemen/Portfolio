@@ -1,0 +1,29 @@
+---
+const { size } = Astro.props;
+import { Icon } from "astro-icon";
+
+// const { default: innerHTML } = await import(`../assets/avatar.svg?raw`);
+---
+
+<div class="avatar">
+    <Icon name="avatar" />
+</div>
+
+<style define:vars={{ size }}>
+    [astro-icon] {
+        width: var(--size);
+        height: var(--size);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .avatar {
+        position: relative;
+        width: calc(var(--size) - 10px);
+        height: calc(var(--size) - 10px);
+        border-radius: 50%;
+        background-color: #3959ac;
+        overflow: hidden;
+    }
+</style>

@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Avatar from "../components/Avatar.astro";
+---
+
+<Layout title="Welcome to Astro.">
+    <main>
+        <article class="main__article">
+            <Avatar size={"300px"} />
+            <section class="main__section">
+                <h1>Hello, I'm Eduardo</h1>
+                <p>
+                    I'm a frontend developer, passionate about creating
+                    beautiful and performant websites.
+                    <br />
+                     I'm always searching for new and exciting projects to work
+                    on.
+                </p>
+            </section>
+        </article>
+    </main>
+</Layout>
+
+<style>
+    body {
+        height: 100vh;
+    }
+    main {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .main__article {
+        width: 80%;
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main__section {
+        color: aliceblue;
+        text-align: center;
+        text-align: start;
+    }
+
+    .main__section h1 {
+        font-size: 5rem;
+        margin: 0;
+        padding: 0;
+        background: -webkit-radial-gradient(#eee, #1dc4ab);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: animate 5s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            background-position: 0 100%;
+        }
+
+        100% {
+            background-position: 100% 0;
+        }
+
+        0% {
+            background-position: 0 100%;
+        }
+    }
+</style>
