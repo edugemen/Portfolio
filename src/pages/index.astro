@@ -2,6 +2,24 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Avatar from "../components/Avatar.astro";
+import Text from "../components/Text.tsx";
+
+// import { getLocale } from "astro-i18n-aut";
+// //Import type Language
+// import type { Language } from "../lang/utils";
+// import { getTranslation } from "../lang/utils";
+
+// const locale: Language = getLocale(Astro.url) as Language;
+
+// let description = getTranslation("main.description", locale);
+
+import { $selectedLanguage, getTranslation } from "../lang/utils";
+let description = getTranslation("main.description", $selectedLanguage.get());
+
+$selectedLanguage.listen((newLang) => {
+    console.log("AAA", newLang);
+    description = getTranslation("main.description", newLang);
+});
 ---
 
 <Layout title="Welcome to Astro.">
@@ -10,13 +28,7 @@ import Avatar from "../components/Avatar.astro";
             <Avatar size={"300px"} />
             <section class="main__section">
                 <h1>Hello, I'm Eduardo</h1>
-                <p>
-                    I'm a frontend developer, passionate about creating
-                    beautiful and performant websites.
-                    <br />
-                     I'm always searching for new and exciting projects to work
-                    on.
-                </p>
+                <Text client:visible type="h3" id={"main.description"} />
             </section>
         </article>
     </main>

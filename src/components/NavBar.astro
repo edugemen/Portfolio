@@ -1,8 +1,14 @@
+---
+import { languages } from "../lang/utils";
+import LangSelector from "./LangSelector";
+---
+
 <nav>
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/blog">Blog</a></li>
+        <li><LangSelector client:visible /></li>
     </ul>
 </nav>
 
