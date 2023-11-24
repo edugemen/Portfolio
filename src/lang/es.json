@@ -1,0 +1,30 @@
+{
+    "nav.home": "INICIO",
+    "nav.about": "SOBRE MI",
+    "nav.blog": "BLOG",
+    "info.dev": "Desarrollador frontend",
+    "info.contact": "Contactame",
+    "main.title": "Hola 👋!",
+    "main.description": "Soy un desarrollador frontend apasionado por el diseño web, siempre en busca de nuevas formas de mejorar. Busco proyectos emocionantes para poner en práctica mis habilidades y crear experiencias digitales excepcionales.",
+    "experience.title": "Experiencia",
+
+    "experience.1.title": "GUI para lectura de un sensor médico",
+    "experience.1.empresa": "Johnson & Johnson",
+    "experience.1.date": "Agosto 2023 - Octubre 2023",
+    "experience.1.description": "Desarrollé una aplicación de escritorio hecha con Tauri (ReactJS + Rust), en la que se mostraba la lectura de un sensor y tambien se trataban los datos. Trabajé con otro programador que se encargó del microcontrolador para el sensor. Me aseguré de que el usuario tuviese una experiencia fluida y agradable.",
+
+    "experience.2.title": "Blockchain privada para medir aportación de stakers",
+    "experience.2.empresa": "Decentralized Security SL",
+    "experience.2.date": "Julio 2021 - Septiembre 2022",
+    "experience.2.description": "Trabajé en un proyecto de blockchain privada, usando como base Tendermint. Hice contratos inteligentes para un proyecto de la empresa relacionado con el control de la participación de los stakers en la red. Además, también aproveché la oportunidad para llevar a cabo mi trabajo de fin de grado, centrado en el uso de la blockchain para votaciones online.",
+
+    "experience.3.title": "2º puesto en la hackathon EthOdyssey",
+    "experience.3.empresa": "EthOdyssey",
+    "experience.3.date": "Julio 2021",
+    "experience.3.description": "Presenté el trabajo hecho en las prácticas de la universidad y quedé en segundo puesto en la categoria de NuCypher.",
+
+    "experience.4.title": "Prácticas en empresa",
+    "experience.4.empresa": "Decentralized Security SL",
+    "experience.4.date": "Marzo 2021 - Junio 2021",
+    "experience.4.description": "Aprendí sobre el ecosistema blockchain y la arquitectura Web3, además de desarrollar algunos contratos inteligentes con Solidity."
+}

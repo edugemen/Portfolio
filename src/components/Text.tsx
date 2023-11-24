@@ -1,6 +1,7 @@
 import { useStore } from "@nanostores/react";
 import React, { useEffect, useMemo } from "react";
 import { $selectedLanguage, getTranslation } from "../lang/utils";
+import "./Text.css";
 
 interface TextProps {
     id: string;
@@ -23,8 +24,12 @@ function Text(props: TextProps) {
         return <h2 className={className}>{text}</h2>;
     } else if (type === "h3") {
         return <h3 className={className}>{text}</h3>;
+    } else if (type === "h4") {
+        return <h4 className={className}>{text}</h4>;
     } else if (type === "p") {
         return <p className={className}>{text}</p>;
+    } else if (type === "none") {
+        return <>{text}</>;
     }
 }
 

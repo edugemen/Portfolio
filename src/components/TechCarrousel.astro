@@ -1,0 +1,197 @@
+---
+import { IconBrandTypescript } from "@tabler/icons-react";
+import { IconBrandCss3 } from "@tabler/icons-react";
+import { IconSql } from "@tabler/icons-react";
+import { IconBrandGithubFilled } from "@tabler/icons-react";
+import { IconBrandJavascript } from "@tabler/icons-react";
+import {
+    IconBrandHtml5,
+    IconBrandNodejs,
+    IconBrandReact,
+} from "@tabler/icons-react";
+import Icon from "astro-icon";
+
+// let icons = [
+//     `<IconBrandHtml5 />`,
+//     `<IconBrandJavascript />`,
+//     `<IconBrandTypescript />`,
+//     `<IconBrandCss3 />`,
+//     `<IconBrandReact />`,
+//     `<IconBrandNodejs />`,
+//     `<IconBrandGithubFilled />`,
+//     `<IconSql />`,
+//     // () => <Icon name="tauri" />,
+//     // () => <Icon name="astro" />,
+// ].map((item) => {
+//     console.log(`<div class="tech__item">${item}</div>`);
+//     return `<div class="tech__item">${item}</div>`;
+// });
+
+let icons = [
+    {
+        item: IconBrandHtml5,
+        size: 100,
+        color: "#FE4C1E50",
+        title: "HTML",
+    },
+    {
+        item: IconBrandJavascript,
+        size: 100,
+        color: "#EFD81D50",
+        title: "Javascript",
+    },
+    {
+        item: IconBrandTypescript,
+        size: 100,
+        color: "#2F74C050",
+        title: "Typescript",
+    },
+    {
+        item: IconBrandCss3,
+        size: 100,
+        color: "#254BDD50",
+        title: "CSS",
+    },
+    {
+        item: IconBrandReact,
+        size: 100,
+        color: "#149ECA50",
+        title: "React",
+    },
+    {
+        item: IconBrandNodejs,
+        size: 100,
+        color: "#4C994350",
+        title: "NodeJS",
+    },
+    {
+        item: IconBrandGithubFilled,
+        size: 100,
+        color: "#00000050",
+        title: "Github",
+    },
+    {
+        item: IconSql,
+        size: 100,
+        color: "#D4713150",
+        title: "SQL",
+    },
+    {
+        item: Icon,
+        name: "tauri",
+        size: 90,
+        color: "#23C2D450",
+        title: "Tauri",
+    },
+    {
+        item: Icon,
+        name: "astro",
+        size: 90,
+        color: "#F7590150",
+        title: "Astro",
+    },
+];
+
+icons = [...icons, ...icons];
+---
+
+<article class="tech__carrousel">
+    <div class="slider">
+        {
+            icons.map((aux) => {
+                if (aux.item === Icon) {
+                    return (
+                        <div
+                            class="tech__item"
+                            style={`--color-1: ${aux.color};`}
+                        >
+                            <Icon
+                                name={aux.name}
+                                size={aux.size}
+                                aria-label={aux.title + " Icon"}
+                            />
+                            <p class="tech__title">{aux.title}</p>
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div
+                            class="tech__item"
+                            style={`--color-1: ${aux.color};`}
+                        >
+                            <aux.item
+                                size={aux.size}
+                                aria-label={aux.title + " Icon"}
+                            />
+                            <p class="tech__title">{aux.title}</p>
+                        </div>
+                    );
+                }
+            })
+        }
+    </div>
+</article>
+
+<style>
+    .tech__carrousel {
+        --item-width: 300px;
+
+        width: 100%;
+        /* overflow: hidden; */
+        animation: carrousel 30s linear infinite;
+
+        .slider {
+            height: 200px;
+            overflow: visible;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: calc(var(--item-width) * 20);
+        }
+    }
+
+    .tech__item {
+        width: var(--item-width);
+        height: 130px;
+        display: flex;
+        margin: 35px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tech__title {
+        font-size: 1.2rem;
+        visibility: hidden;
+    }
+
+    .tech__item:hover {
+        background: var(--color-1);
+        background: radial-gradient(
+            circle,
+            var(--color-1) 10%,
+            rgba(255, 255, 255, 0) 50%
+        );
+
+        .tech__title {
+            visibility: visible;
+        }
+    }
+
+    @keyframes carrousel {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(calc(var(--item-width) * -10));
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tech__carrousel {
+            --item-width: 150px;
+        }
+    }
+</style>

@@ -1,0 +1,80 @@
+---
+import Avatar from "./Avatar.astro";
+import Text from "./Text";
+import GlassCard from "./reusables/GlassCard.astro";
+import {
+    IconBrandGithub,
+    IconMail,
+    IconBrandLinkedin,
+} from "@tabler/icons-react";
+---
+
+<GlassCard>
+    <Avatar size={"300px"} />
+    <article class="info__article">
+        <h1>Eduardo Guerrero</h1>
+        <Text client:visible type="h3" id={"info.dev"} />
+        <div class="info__icon">
+            <IconBrandGithub />
+            <a>Github</a>
+        </div>
+        <div class="info__icon">
+            <IconMail />
+            <a>Gmail</a>
+        </div>
+        <div class="info__icon">
+            <IconBrandLinkedin />
+            <a>Linkedin</a>
+        </div>
+        <button class="button info__button">
+            <Text client:visible type={"none"} id="info.contact" />
+        </button>
+    </article>
+</GlassCard>
+
+<style>
+    .info__article {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        color: aliceblue;
+    }
+
+    .info__article h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 3rem;
+        color: rgb(165, 197, 255);
+        line-height: 50px;
+        margin: 10px 0 10px 0;
+    }
+
+    .info__icon {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin: 10px 0 0 0;
+        gap: 5px;
+        transition: gap 100ms ease;
+
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+
+    .info__icon:hover {
+        gap: 15px;
+
+        a {
+            font-weight: 700;
+        }
+    }
+
+    .info__button {
+        width: 100%;
+        margin-top: 10px;
+    }
+</style>

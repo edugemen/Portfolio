@@ -2,63 +2,105 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Avatar from "../components/Avatar.astro";
+import TechCarousel from "../components/TechCarrousel.astro";
 import Text from "../components/Text.tsx";
-
-// import { getLocale } from "astro-i18n-aut";
-// //Import type Language
-// import type { Language } from "../lang/utils";
-// import { getTranslation } from "../lang/utils";
-
-// const locale: Language = getLocale(Astro.url) as Language;
-
-// let description = getTranslation("main.description", locale);
-
-import { $selectedLanguage, getTranslation } from "../lang/utils";
-let description = getTranslation("main.description", $selectedLanguage.get());
-
-$selectedLanguage.listen((newLang) => {
-    console.log("AAA", newLang);
-    description = getTranslation("main.description", newLang);
-});
+import InfoCard from "../components/InfoCard.astro";
+import ExpSection from "../components/ExpSection.astro";
 ---
 
 <Layout title="Welcome to Astro.">
     <main>
         <article class="main__article">
-            <Avatar size={"300px"} />
-            <section class="main__section">
-                <h1>Hello, I'm Eduardo</h1>
-                <Text client:visible type="h3" id={"main.description"} />
+            <section class="avatar__section">
+                <InfoCard />
             </section>
+            <section class="main__section">
+                <Text
+                    client:visible
+                    type="h2"
+                    className="center"
+                    id={"main.title"}
+                />
+                <Text client:visible type="h4" id={"main.description"} />
+            </section>
+        </article>
+        <TechCarousel />
+        <article class="experience__article">
+            <Text client:visible type="h1" id={"experience.title"} />
+            <ExpSection
+                img="/j&j.png"
+                title="experience.1.title"
+                empresa="experience.1.empresa"
+                date="experience.1.date"
+                description="experience.1.description"
+            />
+            <div class="experience__separator"></div>
+            <ExpSection
+                img="/dsecurity.jpg"
+                title="experience.2.title"
+                empresa="experience.2.empresa"
+                date="experience.2.date"
+                description="experience.2.description"
+            />
+            <div class="experience__separator"></div>
+            <ExpSection
+                img="/devfolio.png"
+                title="experience.3.title"
+                empresa="experience.3.empresa"
+                date="experience.3.date"
+                description="experience.3.description"
+            />
+            <div class="experience__separator"></div>
+            <ExpSection
+                img="/dsecurity.jpg"
+                title="experience.4.title"
+                empresa="experience.4.empresa"
+                date="experience.4.date"
+                description="experience.4.description"
+            />
         </article>
     </main>
 </Layout>
 
 <style>
     body {
-        height: 100vh;
+        background: #13151a;
+        padding: 0;
+        margin: 0;
+        background-image: url("/back.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        color: aliceblue;
     }
     main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .main__article {
         height: 100vh;
         width: 100%;
         display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+    }
+    .avatar__section {
+        display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
     }
-    .main__article {
-        width: 80%;
-        display: grid;
-        place-items: center;
-        grid-template-columns: 1fr 1fr;
-    }
-
     .main__section {
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        width: 40%;
         color: aliceblue;
         text-align: center;
         text-align: start;
     }
-
     .main__section h1 {
         font-size: 5rem;
         margin: 0;
@@ -69,7 +111,6 @@ $selectedLanguage.listen((newLang) => {
         -webkit-text-fill-color: transparent;
         animation: animate 5s linear infinite;
     }
-
     @keyframes animate {
         0% {
             background-position: 0 100%;
@@ -81,6 +122,39 @@ $selectedLanguage.listen((newLang) => {
 
         0% {
             background-position: 0 100%;
+        }
+    }
+    .experience__article {
+        margin-top: 100px;
+        margin-bottom: 2000px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .experience__separator {
+        width: 90%;
+        border-bottom: white 1px solid;
+        border-radius: 50%;
+    }
+
+    @media (max-width: 700px) {
+        .main__article {
+            flex-direction: column;
+            height: auto;
+            width: 90%;
+            padding-top: 80px;
+        }
+
+        .main__section {
+            width: 90%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 5%;
+            gap: 20px;
+            border: 1px solid #fcffff;
+            border-radius: 15px;
         }
     }
 </style>
