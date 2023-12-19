@@ -16,15 +16,18 @@ import {
         <Text client:visible type="h3" id={"info.dev"} />
         <div class="info__icon">
             <IconBrandGithub />
-            <a>Github</a>
+            <a href="https://github.com/edugemen">Github</a>
         </div>
         <div class="info__icon">
             <IconMail />
-            <a>Gmail</a>
+            <a
+                href="https://mail.google.com/mail/?view=cm&source=mailto&to=edugemen@gmail.com"
+                >Gmail</a
+            >
         </div>
         <div class="info__icon">
             <IconBrandLinkedin />
-            <a>Linkedin</a>
+            <a href="https://www.linkedin.com/in/edugemen/">Linkedin</a>
         </div>
         <button class="button info__button">
             <Text client:visible type={"none"} id="info.contact" />
@@ -52,6 +55,7 @@ import {
 
     .info__icon {
         display: flex;
+        align-items: center;
         justify-content: center;
         flex-direction: row;
         margin: 10px 0 0 0;
@@ -62,6 +66,7 @@ import {
             text-decoration: none;
             cursor: pointer;
             user-select: none;
+            color: aliceblue;
         }
     }
 

@@ -1,0 +1,105 @@
+---
+import emailjs from "@emailjs/browser";
+---
+
+<form class="contact__form" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder="Name" />
+    <label for="email">Email</label>
+    <input type="email" name="mail" placeholder="Email" />
+    <label for="message">Message</label>
+    <textarea name="message" placeholder="Message"></textarea>
+    <button type="submit" id="contact__button">Send</button>
+</form>
+
+<script>
+    import emailjs from "@emailjs/browser";
+    import { toast } from "sonner";
+
+    emailjs.init("G7HORSmDTHt5bFrzO");
+
+    const button = document.getElementById("contact__button");
+
+    const form = document.querySelector("form");
+
+    form!.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (!form) {
+            return;
+        } else if (!form?.reportValidity()) {
+            return;
+        }
+
+        button?.setAttribute("disabled", "true");
+        button!.textContent = "Sending...";
+
+        emailjs.sendForm("service_4vlnrd5", "contact_form", form!).then(() => {
+            form!.reset();
+
+            button?.removeAttribute("disabled");
+            button!.textContent = "Send";
+
+            toast.success("Message sent!");
+        });
+    });
+</script>
+
+<style>
+    .contact__form {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        width: 40%;
+        height: 100%;
+    }
+
+    .contact__form label {
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .contact__form input,
+    .contact__form textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        resize: none;
+        margin-bottom: 20px;
+    }
+
+    .contact__form textarea {
+        height: 150px;
+    }
+
+    .contact__form button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        align-self: flex-end;
+        transition: background-color 0.3s ease;
+    }
+
+    .contact__form button:hover {
+        background-color: #0062cc;
+    }
+
+    @media (max-width: 700px) {
+        .contact__form {
+            width: 90%;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .contact__form {
+            width: 60%;
+        }
+    }
+</style>

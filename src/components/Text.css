@@ -10,6 +10,10 @@
     text-align: center;
 }
 
+.pb-1 {
+    padding-bottom: 1rem;
+}
+
 h1 {
     font-size: 48px;
 }
