@@ -1,3 +1,3 @@
 # My portfolio
 
-![portada](localhost:3000/public/portada.webp)
+![portada](https://raw.githubusercontent.com/edugemen/Portfolio/main/public/portada.webp)
