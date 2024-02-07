@@ -1,6 +1,6 @@
 ---
 import Text from "./Text";
-const { img, title, empresa, date, description } = Astro.props;
+const { img, title, empresa, date, description, link } = Astro.props;
 ---
 
 <section class="exp__section">
@@ -10,6 +10,13 @@ const { img, title, empresa, date, description } = Astro.props;
         <Text client:visible type="h3" id={empresa} />
         <Text client:visible type="h4" className="secondary" id={date} />
         <Text client:visible type="p" id={description} />
+        {
+            link && (
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                    Link
+                </a>
+            )
+        }
     </div>
 </section>
 
@@ -45,8 +52,21 @@ const { img, title, empresa, date, description } = Astro.props;
         margin: 0 0 5px 0;
     }
 
+    a {
+        text-decoration: none;
+        color: rgb(87, 191, 255);
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: color 100ms ease;
+        margin-top: 10px;
+    }
+
+    a:hover {
+        color: rgb(255, 255, 255);
+    }
+
     /* breakpoint between 550px and 800px */
-    @media (max-width: 700px) {
+    @media (max-width: 1000px) {
         .exp__section {
             width: 90%;
             flex-direction: column;

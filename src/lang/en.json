@@ -1,7 +1,51 @@
 {
     "nav.home": "HOME",
-    "nav.about": "ABOUT",
-    "nav.blog": "BLOG",
-    "main.title": "Hi, I'm Eduardo!",
-    "main.description": "I'm a frontend developer, passionate about creating beautiful and performant websites. I'm always searching for new and exciting projects to work on. "
+    "nav.projects": "PROJECTS",
+    "nav.experience": "EXPERIENCE",
+    "nav.contact": "CONTACT",
+    "info.dev": "Frontend Developer",
+    "info.contact": "Contact me",
+    "main.title": "Hi 👋!",
+    "main.description": "I'm a frontend developer passionate about web design, always looking for new ways to improve. I'm looking for exciting projects to put my skills to use and create exceptional digital experiences.",
+
+    "projects.title": "Projects",
+    "projects.1.title": "Web application for a volleyball team.",
+    "projects.1.description.1": "I made this website for my volleyball team and it shows the ranking of the league we play in, as well as the matches we have played and the ones we have left.",
+    "projects.1.description.2": "It is made with Astro and React with TypeScript. It also has a server made with Node.js that takes care of downloading the new images that are uploaded to the team's Instagram and reduces them so they don't take up too much space. Finally, the live scoreboard of the streaming we do on Twitch is connected to the website.",
+    "projects.2.title": "Desktop application to receive a sensor reading and perform some operations.",
+    "projects.2.description.1": "A friend and I did this project as freelancers to take readings from a sensor and do some real time minimum calculations. It was the first time I worked using Rust, but I really liked the Tauri environment and decided to use it. It was a challenge to get the application to run smoothly with thousands of points on graphs. I made the desktop application, which connected via wifi to an ESP32 microcontroller, which is what my partner programmed.",
+    "projects.3.title": "Mobile application to control a volleyball scoreboard.",
+    "projects.3.description.1": "Also for the volleyball team, two friends of the team and I decided to develop a physical scoreboard along with one that would be seen in the streams we do on Twitch. I made the mobile app to control the scoreboard and a small server made in Node.js to which the online scoreboard for the streaming and the physical scoreboard are connected. It was a very interesting project and it turned out quite well.",
+
+    "experience.title": "Experience",
+
+    "experience.1.title": "GUI for reading a medical sensor.",
+    "experience.1.empresa": "Johnson & Johnson",
+    "experience.1.date": "August 2023 - October 2023",
+    "experience.1.description": "I developed a desktop application made with Tauri (ReactJS + Rust), which displayed a sensor reading and also processed the data. I worked with another programmer who took care of the microcontroller for the sensor. I made sure the user experience was smooth and enjoyable.",
+
+    "experience.2.title": "Private blockchain to measure stakers' contribution.",
+    "experience.2.empresa": "Decentralized Security SL",
+    "experience.2.date": "July 2021 - September 2022",
+    "experience.2.description": "I worked on a private blockchain project, using Tendermint as a base. I made smart contracts for a company project related to controlling stakers' participation in the network. In addition, I also took the opportunity to carry out my final thesis, focusing on the use of the blockchain for online voting.",
+
+    "experience.3.title": "2nd place in EthOdyssey hackathon.",
+    "experience.3.empresa": "EthOdyssey",
+    "experience.3.date": "July 2021",
+    "experience.3.description": "I presented the work I had done in my university internship and came second in the NuCypher category.",
+
+    "experience.4.title": "Internships in a company",
+    "experience.4.empresa": "Decentralized Security SL",
+    "experience.4.date": "March 2021 - June 2021",
+    "experience.4.description": "I learned about the blockchain ecosystem and Web3 architecture, as well as developing some smart contracts with Solidity.",
+
+    "contact.title": "Contact me",
+    "contact.name": "Name",
+    "contact.email": "Email",
+    "contact.message": "Message",
+    "contact.send": "Send",
+
+    "footer.copy": "Copyright © 2023 Eduardo Guerrero Méndez. All rights reserved.",
+    "footer.github": "Portfolio GitHub: ",
+    "footer.link": "Link"
 }

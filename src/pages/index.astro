@@ -1,15 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import Avatar from "../components/Avatar.astro";
 import TechCarousel from "../components/TechCarrousel.astro";
 import Text from "../components/Text.tsx";
 import InfoCard from "../components/InfoCard.astro";
 import ExpSection from "../components/ExpSection.astro";
 import Contacto from "../components/Contacto.astro";
+import ProjectSection from "../components/ProjectSection.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Portfolio">
     <main>
         <article class="main__article">
             <section class="avatar__section">
@@ -28,7 +29,30 @@ import Contacto from "../components/Contacto.astro";
             </section>
         </article>
         <TechCarousel />
-        <article class="experience__article">
+        <article id="projects" class="projects__article">
+            <Text client:visible type="h1" id={"projects.title"} />
+            <div class="row">
+                <ProjectSection
+                    img="/vam_portada.webp"
+                    title="projects.1.title"
+                    icons={["astro", "js", "react", "node"]}
+                    link="/projects/vam"
+                />
+                <ProjectSection
+                    img="/fabulab_portada.webp"
+                    title="projects.2.title"
+                    icons={["tauri", "ts"]}
+                    link="/projects/sensor"
+                />
+                <ProjectSection
+                    img="/marcador_portada.webp"
+                    title="projects.3.title"
+                    icons={["react", "capacitor", "node"]}
+                    link="/projects/marcador"
+                />
+            </div>
+        </article>
+        <article id="experience" class="experience__article">
             <Text client:visible type="h1" id={"experience.title"} />
             <ExpSection
                 img="/j&j.png"
@@ -37,23 +61,25 @@ import Contacto from "../components/Contacto.astro";
                 date="experience.1.date"
                 description="experience.1.description"
             />
-            <div class="experience__separator"></div>
+            <div class="separator"></div>
             <ExpSection
                 img="/dsecurity.jpg"
                 title="experience.2.title"
                 empresa="experience.2.empresa"
                 date="experience.2.date"
                 description="experience.2.description"
+                link="https://decentralizedsecurity.es/#projects"
             />
-            <div class="experience__separator"></div>
+            <div class="separator"></div>
             <ExpSection
                 img="/devfolio.png"
                 title="experience.3.title"
                 empresa="experience.3.empresa"
                 date="experience.3.date"
                 description="experience.3.description"
+                link="https://devfolio.co/projects/optimizing-worker-tracking-in-nucypher-using-bls-4a2d"
             />
-            <div class="experience__separator"></div>
+            <div class="separator"></div>
             <ExpSection
                 img="/dsecurity.jpg"
                 title="experience.4.title"
@@ -62,10 +88,11 @@ import Contacto from "../components/Contacto.astro";
                 description="experience.4.description"
             />
         </article>
-        <article class="contact__article">
+        <article id="contact" class="contact__article">
             <Text client:visible type="h1" id={"contact.title"} />
             <Contacto />
         </article>
+        <Footer />
     </main>
 </Layout>
 
@@ -78,6 +105,7 @@ import Contacto from "../components/Contacto.astro";
         background-repeat: no-repeat;
         background-size: contain;
         color: aliceblue;
+        overflow-x: hidden;
     }
     main {
         width: 100%;
@@ -131,31 +159,51 @@ import Contacto from "../components/Contacto.astro";
             background-position: 0 100%;
         }
     }
+
+    .projects__article {
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 10px;
+    }
+
     .experience__article {
-        margin-top: 100px;
-        margin-bottom: 100px;
+        padding-top: 100px;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-    .experience__separator {
+    .separator {
         width: 90%;
         border-bottom: white 1px solid;
         border-radius: 50%;
+        margin: 20px 0;
     }
 
     .contact__article {
+        padding-top: 100px;
         width: 100%;
-        margin-bottom: 500px;
+        margin-bottom: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 1000px) {
         .main__article {
             flex-direction: column;
             height: auto;

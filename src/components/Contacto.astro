@@ -1,15 +1,17 @@
 ---
-import emailjs from "@emailjs/browser";
+import Text from "./Text";
 ---
 
 <form class="contact__form" method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name" placeholder="Name" />
-    <label for="email">Email</label>
-    <input type="email" name="mail" placeholder="Email" />
-    <label for="message">Message</label>
-    <textarea name="message" placeholder="Message"></textarea>
-    <button type="submit" id="contact__button">Send</button>
+    <Text client:visible type="h4" id="contact.name" />
+    <input type="text" name="name" />
+    <Text client:visible type="h4" id="contact.email" />
+    <input type="email" name="mail" />
+    <Text client:visible type="h4" id="contact.message" />
+    <textarea name="message"></textarea>
+    <button type="submit" id="contact__button">
+        <Text client:visible type="h4" id="contact.send" />
+    </button>
 </form>
 
 <script>
@@ -53,11 +55,7 @@ import emailjs from "@emailjs/browser";
         justify-content: center;
         width: 40%;
         height: 100%;
-    }
-
-    .contact__form label {
-        font-weight: bold;
-        width: 100%;
+        margin-top: 50px;
     }
 
     .contact__form input,
@@ -69,6 +67,7 @@ import emailjs from "@emailjs/browser";
         font-size: 16px;
         resize: none;
         margin-bottom: 20px;
+        margin-top: 5px;
     }
 
     .contact__form textarea {

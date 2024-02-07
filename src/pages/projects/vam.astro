@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Text from "../../components/Text";
+---
+
+<Layout title="VAM">
+    <main>
+        <img src="/vam_portada.webp" alt="" />
+        <section class="text__section">
+            <Text
+                client:visible
+                type="h2"
+                className="primary"
+                id={"projects.1.title"}
+            />
+            <Text
+                client:visible
+                type="h4"
+                className="tertiary"
+                id={"projects.1.description.1"}
+            />
+            <Text
+                client:visible
+                type="h4"
+                className="tertiary"
+                id={"projects.1.description.2"}
+            />
+        </section>
+        <img src="/vam_1.webp" alt="" />
+        <img src="/vam_2.webp" alt="" />
+    </main>
+</Layout>
+
+<style>
+    main {
+        margin: 100px auto 0;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        color: aliceblue;
+    }
+
+    .text__section {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        border-right: 2px solid white;
+        border-left: 2px solid white;
+        padding: 10px 20px;
+    }
+</style>

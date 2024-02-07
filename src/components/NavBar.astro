@@ -1,15 +1,48 @@
 ---
+import Icon from "astro-icon";
 import LangSelector from "./LangSelector";
+import Text from "./Text";
 ---
 
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><LangSelector client:visible /></li>
-    </ul>
+<nav class="topnav" id="myTopnav">
+    <!-- <ul > -->
+    <a href="/#" class="active">
+        <Text type="h4" id="nav.home" />
+    </a>
+    <a href="/#projects">
+        <Text type="h4" id="nav.projects" />
+    </a>
+    <a href="/#experience">
+        <Text type="h4" id="nav.experience" />
+    </a>
+    <a href="/#contact">
+        <Text type="h4" id="nav.contact" />
+    </a>
+    <LangSelector id="lang" client:visible />
+    <Icon id="menu" name="menu" size={30} />
+    <!-- <a href="javascript:void(0);" id="menu" class="icon">
+        <i class="fa fa-bars"></i>
+    </a> -->
+    <!-- </ul> -->
 </nav>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav")!;
+        if (x.className === "topnav") {
+            x.className += " responsive";
+            window.onscroll = function () {
+                x.className = "topnav";
+            };
+        } else {
+            x.className = "topnav";
+        }
+    }
+
+    document.getElementById("menu")?.addEventListener("click", () => {
+        myFunction();
+    });
+</script>
 
 <style>
     nav {
@@ -20,6 +53,7 @@ import LangSelector from "./LangSelector";
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 10px;
         color: white;
         backdrop-filter: blur(20px);
         mask: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.966) 5%);
@@ -35,11 +69,6 @@ import LangSelector from "./LangSelector";
         justify-content: center;
         align-items: center;
         list-style: none;
-    }
-
-    li {
-        position: relative;
-        height: 100%;
     }
 
     nav a {
@@ -58,5 +87,29 @@ import LangSelector from "./LangSelector";
 
     a:hover {
         color: var(--color-theme-1);
+    }
+
+    nav #menu {
+        display: none;
+    }
+
+    @media (max-width: 700px) {
+        nav a {
+            display: none;
+        }
+        nav #menu {
+            float: right;
+            display: block;
+        }
+        nav.responsive {
+            flex-direction: column;
+        }
+        nav.responsive #menu {
+            display: none;
+        }
+        nav.responsive a {
+            display: block;
+            margin: 10px 0;
+        }
     }
 </style>

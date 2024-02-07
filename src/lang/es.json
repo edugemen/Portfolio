@@ -1,11 +1,22 @@
 {
     "nav.home": "INICIO",
-    "nav.about": "SOBRE MI",
-    "nav.blog": "BLOG",
+    "nav.projects": "PROYECTOS",
+    "nav.experience": "EXPERIENCIA",
+    "nav.contact": "CONTACTO",
     "info.dev": "Desarrollador frontend",
     "info.contact": "Contactame",
     "main.title": "Hola 👋!",
     "main.description": "Soy un desarrollador frontend apasionado por el diseño web, siempre en busca de nuevas formas de mejorar. Busco proyectos emocionantes para poner en práctica mis habilidades y crear experiencias digitales excepcionales.",
+
+    "projects.title": "Proyectos",
+    "projects.1.title": "Aplicación web para un equipo de voleibol.",
+    "projects.1.description.1": "Esta página web la hice para mi equipo de voleibol y en la cual se muestra la clasificación de la liga en la que jugamos, así como los partidos que llevamos jugados y los que nos quedan.",
+    "projects.1.description.2": "Está hecha con astro y React con TypeScript. También tiene un servidor hecho con Node.js que se encarga de descargar las nuevas imágenes que se suben al Instagram del equipo y las reduce para no ocupar mucho espacio. Por último, en la página web está conectado el marcador en directo del streaming que hacemos en Twitch.",
+    "projects.2.title": "Aplicación de escritorio para recibir la lectura de un sensor y hacer algunas operaciones.",
+    "projects.2.description.1": "Un amigo y yo hicimos este proyecto como freelancers para hacer lecturas de un sensor y hacer unos cálculos de mínimos en tiempo real. Es la primera vez que trabajaba utilizando Rust, pero me gustó mucho el entorno de Tauri y decidí usarlo. Fue un reto conseguir que la aplicación fuese fluida representando miles de puntos en gráficas. Yo hice la aplicación de escritorio, que se conectaba por wifi a un microcontrolador ESP32, que es lo que programó mi compañero.",
+    "projects.3.title": "Aplicación de móvil para controlar un marcador de voleibol.",
+    "projects.3.description.1": "También para el equipo de voleibol, dos amigos del equipo y yo decidimos desarrollar un marcador físico junto con uno que se viese en los streamings que hacemos en Twitch. Yo hice la aplicación móvil para controlar el marcador y un pequeño servidor hecho en Node.js al que se conectan el marcador online del streaming y el marcador físico. Fue un proyecto muy interesante y quedó bastante bien.",
+
     "experience.title": "Experiencia",
 
     "experience.1.title": "GUI para lectura de un sensor médico",
@@ -28,5 +39,13 @@
     "experience.4.date": "Marzo 2021 - Junio 2021",
     "experience.4.description": "Aprendí sobre el ecosistema blockchain y la arquitectura Web3, además de desarrollar algunos contratos inteligentes con Solidity.",
 
-    "contact.title": "Contáctame"
+    "contact.title": "Contáctame",
+    "contact.name": "Nombre",
+    "contact.email": "Correo",
+    "contact.message": "Mensaje",
+    "contact.send": "Enviar",
+
+    "footer.copy": "Copyright © 2023 Eduardo Guerrero Méndez. Todos los derechos reservados.",
+    "footer.github": "GitHub del portfolio: ",
+    "footer.link": "Link"
 }
