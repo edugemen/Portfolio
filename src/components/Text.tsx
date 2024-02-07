@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import React, { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { $selectedLanguage, getTranslation } from "../lang/utils";
 import "./Text.css";
 

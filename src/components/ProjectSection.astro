@@ -1,8 +1,6 @@
 ---
-import type { JSXElementConstructor } from "react";
 import Card from "./Card.astro";
 import Text from "./Text";
-import GlassCard from "./reusables/GlassCard.astro";
 import { IconBrandHtml5 } from "@tabler/icons-react";
 import { IconBrandJavascript } from "@tabler/icons-react";
 import { IconBrandTypescript } from "@tabler/icons-react";
@@ -14,7 +12,15 @@ import { IconSql } from "@tabler/icons-react";
 import Icon from "astro-icon";
 const { img, title, icons, link } = Astro.props;
 
-let ICONS: { [key: string]: any } = {
+let ICONS: {
+    [key: string]: {
+        item: (arg0: any) => JSX.Element;
+        size: number;
+        color: string;
+        title: string;
+        name?: string;
+    };
+} = {
     html: {
         item: IconBrandHtml5,
         size: 40,
@@ -65,24 +71,27 @@ let ICONS: { [key: string]: any } = {
     },
     tauri: {
         item: Icon,
-        name: "tauri",
+
         size: 30,
         color: "#23C2D450",
         title: "Tauri",
+        name: "tauri",
     },
     astro: {
         item: Icon,
-        name: "astro",
+
         size: 30,
         color: "#F7590150",
         title: "Astro",
+        name: "astro",
     },
     capacitor: {
         item: Icon,
-        name: "capacitor",
+
         size: 30,
         color: "#F7590150",
         title: "Capacitor",
+        name: "capacitor",
     },
 };
 ---
@@ -102,7 +111,13 @@ let ICONS: { [key: string]: any } = {
                             />
                         );
                     } else {
-                        return <ICONS[aux].item size={ICONS[aux].size} color="white" />
+                        const IconComponent = ICONS[aux].item;
+                        return (
+                            <IconComponent
+                                size={ICONS[aux].size}
+                                color="white"
+                            />
+                        );
                     }
                 })
             }

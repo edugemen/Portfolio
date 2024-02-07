@@ -18,7 +18,7 @@ import Text from "./Text";
     <a href="/#contact">
         <Text type="h4" id="nav.contact" />
     </a>
-    <LangSelector id="lang" client:visible />
+    <LangSelector client:visible />
     <Icon id="menu" name="menu" size={30} />
     <!-- <a href="javascript:void(0);" id="menu" class="icon">
         <i class="fa fa-bars"></i>
@@ -47,6 +47,7 @@ import Text from "./Text";
 <style>
     nav {
         width: 100%;
+        height: 3rem;
         position: fixed;
         top: 0;
         text-align: center;
@@ -76,7 +77,7 @@ import Text from "./Text";
         height: 100%;
         align-items: center;
         padding: 0 1em;
-        color: var(--color-text);
+        color: white;
         font-weight: 700;
         font-size: 0.8rem;
         text-transform: uppercase;
@@ -86,7 +87,7 @@ import Text from "./Text";
     }
 
     a:hover {
-        color: var(--color-theme-1);
+        background-color: #00000080;
     }
 
     nav #menu {

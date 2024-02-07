@@ -1,9 +1,8 @@
-import React from "react";
 import { useStore } from "@nanostores/react";
 import { languages, $selectedLanguage } from "../lang/utils";
 import "./styles.css";
 
-function LangSelector(props: any) {
+function LangSelector() {
     const selectedLanguage = useStore($selectedLanguage);
 
     const toggleLang = () => {
