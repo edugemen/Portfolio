@@ -12,12 +12,37 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang={$selectedLanguage.get()}>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <meta name="title" content="" />
+        <meta
+            name="description"
+            content="I'm Eduardo Guerrero, a frontend developer passionate about web design, always looking for new ways to improve."
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content="https://portfolio-gxlg0bhxf-edugemen.vercel.app"
+        />
+        <meta property="og:title" content={title} />
+        <meta
+            property="og:description"
+            content="I'm Eduardo Guerrero, a frontend developer passionate about web design, always looking for new ways to improve."
+        />
+        <meta property="og:image" content="/portada.webp" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="twitter:url"
+            content="https://portfolio-gxlg0bhxf-edugemen.vercel.app"
+        />
+        <meta property="twitter:title" content={title} />
+        <meta
+            property="twitter:description"
+            content="I'm Eduardo Guerrero, a frontend developer passionate about web design, always looking for new ways to improve."
+        />
+        <meta property="twitter:image" content="/portada.webp" />
     </head>
     <body>
         <NavBar />
