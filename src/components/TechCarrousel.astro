@@ -95,48 +95,53 @@ let icons = [
 icons = [...icons, ...icons];
 ---
 
-<article class="tech__carrousel">
-    <div class="slider">
-        {
-            icons.map((aux) => {
-                if (aux.item === Icon) {
-                    return (
-                        <div
-                            class="tech__item"
-                            style={`--color-1: ${aux.color};`}
-                        >
-                            <Icon
-                                name={aux.name}
-                                size={aux.size}
-                                aria-label={aux.title + " Icon"}
-                            />
-                            <p class="tech__title">{aux.title}</p>
-                        </div>
-                    );
-                } else {
-                    return (
-                        <div
-                            class="tech__item"
-                            style={`--color-1: ${aux.color};`}
-                        >
-                            <aux.item
-                                size={aux.size}
-                                aria-label={aux.title + " Icon"}
-                            />
-                            <p class="tech__title">{aux.title}</p>
-                        </div>
-                    );
-                }
-            })
-        }
-    </div>
-</article>
+<section class="tech__section">
+    <article class="tech__carrousel">
+        <div class="slider">
+            {
+                icons.map((aux) => {
+                    if (aux.item === Icon) {
+                        return (
+                            <div
+                                class="tech__item"
+                                style={`--color-1: ${aux.color};`}
+                            >
+                                <Icon
+                                    name={aux.name}
+                                    size={aux.size}
+                                    aria-label={aux.title + " Icon"}
+                                />
+                                <p class="tech__title">{aux.title}</p>
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <div
+                                class="tech__item"
+                                style={`--color-1: ${aux.color};`}
+                            >
+                                <aux.item
+                                    size={aux.size}
+                                    aria-label={aux.title + " Icon"}
+                                />
+                                <p class="tech__title">{aux.title}</p>
+                            </div>
+                        );
+                    }
+                })
+            }
+        </div>
+    </article>
+</section>
 
 <style>
-    .tech__carrousel {
-        --item-width: 300px;
+    .tech__section {
+        overflow: hidden;
+        width: 100vw;
 
-        width: 100%;
+        --item-width: 300px;
+    }
+    .tech__carrousel {
         animation: carrousel 30s linear infinite;
 
         .slider {
