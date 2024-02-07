@@ -28,6 +28,8 @@ function Text(props: TextProps) {
         return <h4 className={className}>{text}</h4>;
     } else if (type === "p") {
         return <p className={className}>{text}</p>;
+    } else if (type === "h6") {
+        return <h6 className={className}>{text}</h6>;
     } else if (type === "none") {
         return <>{text}</>;
     }

@@ -3,15 +3,16 @@ import Text from "./Text";
 ---
 
 <footer>
-    <Text client:visible type="h4" id="footer.copy" />
-    <Text client:visible type="h4" className="secondary" id="footer.github" />
+    <Text client:visible type="h6" id="footer.copy" />
+    <Text client:visible type="h6" className="secondary" id="footer.github" />
     <a href="https://github.com/edugemen">
-        <Text client:visible type="h4" className="primary" id="footer.link" />
+        <Text client:visible type="h6" className="primary" id="footer.link" />
     </a>
 </footer>
 
 <style>
     footer {
+        box-sizing: border-box;
         display: flex;
         width: 100%;
         height: 70px;
@@ -20,6 +21,7 @@ import Text from "./Text";
         align-items: center;
         justify-content: center;
         gap: 5px;
+        padding: 10px;
     }
 
     a {
