@@ -7,6 +7,7 @@
         "start": "astro dev",
         "build": "astro check && astro build",
         "preview": "astro preview",
+        "version": "astro --version",
         "astro": "astro"
     },
     "dependencies": {
@@ -18,7 +19,7 @@
         "@tabler/icons-react": "^2.42.0",
         "@types/react": "^18.2.38",
         "@types/react-dom": "^18.2.17",
-        "astro": "^4.2.0",
+        "astro": "^4.3.5",
         "astro-icon": "^0.8.1",
         "country-flag-icons": "^1.5.9",
         "nanostores": "^0.9.5",

@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import { Toaster } from "sonner";
 import NavBar from "../components/NavBar.astro";
 import { $selectedLanguage } from "../lang/utils";
@@ -49,12 +48,12 @@ const { title } = Astro.props;
             href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
             rel="stylesheet"
         />
-        <ViewTransitions />
     </head>
     <body>
         <NavBar />
         <slot />
         <Toaster client:load />
+
         <script>
             import {
                 languages,
