@@ -19,18 +19,18 @@ import Footer from "../components/Footer.astro";
             <section class="main__section">
                 <Card>
                     <Text
-                        client:idle
+                        client:load
                         type="h2"
                         className="pb-1"
                         id={"main.title"}
                     />
-                    <Text client:idle type="h4" id={"main.description"} />
+                    <Text client:load type="h4" id={"main.description"} />
                 </Card>
             </section>
         </article>
         <TechCarousel />
         <article id="projects" class="projects__article">
-            <Text client:idle type="h1" id={"projects.title"} />
+            <Text client:load type="h1" id={"projects.title"} />
             <div class="row">
                 <ProjectSection
                     img="/vam_portada.webp"
@@ -56,7 +56,7 @@ import Footer from "../components/Footer.astro";
             </div>
         </article>
         <article id="experience" class="experience__article">
-            <Text client:idle type="h1" id={"experience.title"} />
+            <Text client:load type="h1" id={"experience.title"} />
             <ExpSection
                 img="/j&j.png"
                 title="experience.1.title"
@@ -92,7 +92,7 @@ import Footer from "../components/Footer.astro";
             />
         </article>
         <article id="contact" class="contact__article">
-            <Text client:idle type="h1" id={"contact.title"} />
+            <Text client:load type="h1" id={"contact.title"} />
             <Contacto />
         </article>
         <Footer />
