@@ -3,6 +3,8 @@ import { useMemo } from "react";
 import { $selectedLanguage, getTranslation } from "../lang/utils";
 import "./Text.css";
 
+export const prerender = false;
+
 interface TextProps {
     id: string;
     type: string;
