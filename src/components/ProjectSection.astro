@@ -10,7 +10,7 @@ import { IconBrandNodejs } from "@tabler/icons-react";
 import { IconBrandGithubFilled } from "@tabler/icons-react";
 import { IconSql } from "@tabler/icons-react";
 import Icon from "astro-icon";
-const { img, title, icons, link } = Astro.props;
+const { img, title, icons, link, name } = Astro.props;
 
 let ICONS: {
     [key: string]: {
@@ -98,7 +98,7 @@ let ICONS: {
 
 <section class="proj__section" id={"projects." + title}>
     <Card>
-        <img src={img} />
+        <img transition:name={name} src={img} />
         <div class="proj__tecnologies">
             {
                 icons.map((aux: string) => {

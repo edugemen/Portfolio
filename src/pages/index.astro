@@ -19,41 +19,44 @@ import Footer from "../components/Footer.astro";
             <section class="main__section">
                 <Card>
                     <Text
-                        client:visible
+                        client:idle
                         type="h2"
                         className="pb-1"
                         id={"main.title"}
                     />
-                    <Text client:visible type="h4" id={"main.description"} />
+                    <Text client:idle type="h4" id={"main.description"} />
                 </Card>
             </section>
         </article>
         <TechCarousel />
         <article id="projects" class="projects__article">
-            <Text client:visible type="h1" id={"projects.title"} />
+            <Text client:idle type="h1" id={"projects.title"} />
             <div class="row">
                 <ProjectSection
                     img="/vam_portada.webp"
                     title="projects.1.title"
                     icons={["astro", "js", "react", "node"]}
                     link="/projects/vam"
+                    name="vam"
                 />
                 <ProjectSection
                     img="/fabulab_portada.webp"
                     title="projects.2.title"
                     icons={["tauri", "ts"]}
                     link="/projects/sensor"
+                    name="sensor"
                 />
                 <ProjectSection
                     img="/marcador_portada.webp"
                     title="projects.3.title"
                     icons={["react", "capacitor", "node"]}
                     link="/projects/marcador"
+                    name="marcador"
                 />
             </div>
         </article>
         <article id="experience" class="experience__article">
-            <Text client:visible type="h1" id={"experience.title"} />
+            <Text client:idle type="h1" id={"experience.title"} />
             <ExpSection
                 img="/j&j.png"
                 title="experience.1.title"
@@ -89,7 +92,7 @@ import Footer from "../components/Footer.astro";
             />
         </article>
         <article id="contact" class="contact__article">
-            <Text client:visible type="h1" id={"contact.title"} />
+            <Text client:idle type="h1" id={"contact.title"} />
             <Contacto />
         </article>
         <Footer />

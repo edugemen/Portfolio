@@ -1,5 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { languages, $selectedLanguage } from "../lang/utils";
+import { ES, GB } from "country-flag-icons/react/3x2";
 import "./styles.css";
 
 function LangSelector() {
@@ -16,7 +17,8 @@ function LangSelector() {
 
     return (
         <button className="lang-selector" onClick={toggleLang}>
-            {languages[selectedLanguage].flag}
+            {/* {languages[selectedLanguage].flag} */}
+            {selectedLanguage === "en" ? <GB /> : <ES />}
         </button>
     );
 }

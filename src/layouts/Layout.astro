@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import { Toaster } from "sonner";
 import NavBar from "../components/NavBar.astro";
 import { $selectedLanguage } from "../lang/utils";
@@ -42,94 +43,103 @@ const { title } = Astro.props;
             name="google-site-verification"
             content="i_MXlfiGK0q9pCFIarNrZQ5rka37d5JlBGKlEEhnekI"
         />
+        <ViewTransitions />
     </head>
     <body>
         <NavBar />
         <slot />
         <Toaster client:load />
+        <script>
+            import {
+                languages,
+                type Language,
+                $selectedLanguage,
+            } from "../lang/utils";
+
+            let lang = navigator.language.split("-")[0] as Language;
+
+            if (languages[lang] === undefined) {
+                lang = "es";
+            }
+
+            $selectedLanguage.listen((newLang) => {
+                lang = newLang;
+                document.querySelector("html")?.setAttribute("lang", lang);
+            });
+
+            const cards = Array.from(
+                document.querySelectorAll(".card__container")
+            );
+
+            cards.forEach((card) => {
+                if (card instanceof HTMLElement) {
+                    const x = card.offsetLeft;
+                    const y = card.offsetTop;
+
+                    card.setAttribute("style", `--xx: ${x}px; --yy:${y}px;`);
+                }
+            });
+
+            addEventListener("resize", () => {
+                cards.forEach((card) => {
+                    if (card instanceof HTMLElement) {
+                        const x = card.offsetLeft;
+                        const y = card.offsetTop;
+
+                        card.setAttribute(
+                            "style",
+                            `--xx: ${x}px; --yy:${y}px;`
+                        );
+                    }
+                });
+            });
+
+            const applyOverlayMask = (e: any) => {
+                const overlayEl = e.currentTarget;
+                const x = e.pageX;
+                const y = e.pageY;
+
+                overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`;
+            };
+
+            document.body.addEventListener("pointermove", applyOverlayMask);
+        </script>
+
+        <style is:global>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+            :root {
+                /* background-color: hsl(194, 100%, 75%); */
+                --accent: 200, 76%, 53%;
+                --accent-light: 224, 204, 250;
+                --accent-dark: 49, 10, 101;
+                --accent-gradient: linear-gradient(
+                    45deg,
+                    rgb(var(--accent)),
+                    rgb(var(--accent-light)) 30%,
+                    white 60%
+                );
+            }
+            html {
+                font-family: "Inter", sans-serif;
+                background: #13151a;
+                background-size: 224px;
+                scroll-behavior: smooth;
+            }
+            code {
+                font-family:
+                    Menlo,
+                    Monaco,
+                    Lucida Console,
+                    Liberation Mono,
+                    DejaVu Sans Mono,
+                    Bitstream Vera Sans Mono,
+                    Courier New,
+                    monospace;
+            }
+            body {
+                position: relative;
+            }
+        </style>
     </body>
 </html>
-
-<script>
-    import { languages, type Language, $selectedLanguage } from "../lang/utils";
-
-    let lang = navigator.language.split("-")[0] as Language;
-
-    if (languages[lang] === undefined) {
-        lang = "es";
-    }
-
-    $selectedLanguage.listen((newLang) => {
-        lang = newLang;
-        document.querySelector("html")?.setAttribute("lang", lang);
-    });
-
-    const cards = Array.from(document.querySelectorAll(".card__container"));
-
-    cards.forEach((card) => {
-        if (card instanceof HTMLElement) {
-            const x = card.offsetLeft;
-            const y = card.offsetTop;
-
-            card.setAttribute("style", `--xx: ${x}px; --yy:${y}px;`);
-        }
-    });
-
-    addEventListener("resize", () => {
-        cards.forEach((card) => {
-            if (card instanceof HTMLElement) {
-                const x = card.offsetLeft;
-                const y = card.offsetTop;
-
-                card.setAttribute("style", `--xx: ${x}px; --yy:${y}px;`);
-            }
-        });
-    });
-
-    const applyOverlayMask = (e: any) => {
-        const overlayEl = e.currentTarget;
-        const x = e.pageX;
-        const y = e.pageY;
-
-        overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`;
-    };
-
-    document.body.addEventListener("pointermove", applyOverlayMask);
-</script>
-
-<style is:global>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
-
-    :root {
-        /* background-color: hsl(194, 100%, 75%); */
-        --accent: 200, 76%, 53%;
-        --accent-light: 224, 204, 250;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(
-            45deg,
-            rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
-            white 60%
-        );
-    }
-    html {
-        font-family: "Inter", sans-serif;
-        background: #13151a;
-        background-size: 224px;
-        scroll-behavior: smooth;
-    }
-    code {
-        font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-    }
-    body {
-        position: relative;
-    }
-</style>
