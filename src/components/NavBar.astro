@@ -4,19 +4,19 @@ import LangSelector from "./LangSelector";
 import Text from "./Text";
 ---
 
-<nav class="topnav" id="myTopnav">
+<nav class="topnav" id="myTopnav" transition:persist>
     <!-- <ul > -->
     <a href="/#" class="active">
-        <Text type="h4" id="nav.home" />
+        <Text client:load type="h4" id="nav.home" />
     </a>
     <a href="/#projects">
-        <Text type="h4" id="nav.projects" />
+        <Text client:load type="h4" id="nav.projects" />
     </a>
     <a href="/#experience">
-        <Text type="h4" id="nav.experience" />
+        <Text client:load type="h4" id="nav.experience" />
     </a>
     <a href="/#contact">
-        <Text type="h4" id="nav.contact" />
+        <Text client:load type="h4" id="nav.contact" />
     </a>
     <LangSelector client:visible />
     <Icon id="menu" name="menu" size={30} />
