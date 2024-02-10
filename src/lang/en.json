@@ -9,6 +9,8 @@
     "main.description": "I'm a frontend developer passionate about web design, always looking for new ways to improve. I'm looking for exciting projects to put my skills to use and create exceptional digital experiences.",
 
     "projects.title": "Projects",
+
+    "projects.readmore": "Read more",
     "projects.1.title": "Web application for a volleyball team.",
     "projects.1.description.1": "I made this website for my volleyball team and it shows the ranking of the league we play in, as well as the matches we have played and the ones we have left.",
     "projects.1.description.2": "It is made with Astro and React with TypeScript. It also has a server made with Node.js that takes care of downloading the new images that are uploaded to the team's Instagram and reduces them so they don't take up too much space. Finally, the live scoreboard of the streaming we do on Twitch is connected to the website.",

@@ -9,6 +9,8 @@
     "main.description": "Soy un desarrollador frontend apasionado por el diseño web, siempre en busca de nuevas formas de mejorar. Busco proyectos emocionantes para poner en práctica mis habilidades y crear experiencias digitales excepcionales.",
 
     "projects.title": "Proyectos",
+
+    "projects.readmore": "Leer más",
     "projects.1.title": "Aplicación web para un equipo de voleibol.",
     "projects.1.description.1": "Esta página web la hice para mi equipo de voleibol y en la cual se muestra la clasificación de la liga en la que jugamos, así como los partidos que llevamos jugados y los que nos quedan.",
     "projects.1.description.2": "Está hecha con astro y React con TypeScript. También tiene un servidor hecho con Node.js que se encarga de descargar las nuevas imágenes que se suben al Instagram del equipo y las reduce para no ocupar mucho espacio. Por último, en la página web está conectado el marcador en directo del streaming que hacemos en Twitch.",
