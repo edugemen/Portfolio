@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { useMemo } from "react";
-import { $selectedLanguage, getTranslation } from "../lang/utils";
+// import { $selectedLanguage, getTranslation } from "../lang/utils";
 import "./Text.css";
 
 export const prerender = false;
@@ -13,7 +13,7 @@ interface TextProps {
 
 function Text(props: TextProps) {
     const { id, type, className } = props;
-    const lang = useStore($selectedLanguage);
+    const lang = useStore();
     const text = useMemo(() => {
         if (lang) {
             return getTranslation(id, lang);
@@ -37,4 +37,4 @@ function Text(props: TextProps) {
     }
 }
 
-export default Text;
+// export default Text;

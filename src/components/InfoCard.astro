@@ -1,19 +1,21 @@
 ---
 import Avatar from "./Avatar.astro";
-import Text from "./Text";
 import GlassCard from "./reusables/GlassCard.astro";
 import {
     IconBrandGithub,
     IconMail,
     IconBrandLinkedin,
 } from "@tabler/icons-react";
+import { getLangFromUrl, useTranslations } from "../lang/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <GlassCard>
     <Avatar size={"300px"} />
-    <article class="info__article">
-        <h1>Eduardo Guerrero</h1>
-        <Text client:visible type="h3" id={"info.dev"} />
+    <article class="text-white text-l flex flex-col items-start">
+        <h1 class="text-5xl text-blue-600">Eduardo Guerrero</h1>
+        <h3 class="text-2xl">{t("info.dev")}</h3>
         <div class="info__icon">
             <IconBrandGithub />
             <a href="https://github.com/edugemen">Github</a>
@@ -30,59 +32,59 @@ import {
             <a href="https://www.linkedin.com/in/edugemen/">Linkedin</a>
         </div>
         <button
-            class="button info__button"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5 w-full"
             onclick="window.location.href='#contact'"
         >
-            <Text client:visible type={"none"} id="info.contact" />
+            <p>{t("info.contact")}</p>
         </button>
     </article>
-</GlassCard>
 
-<style>
-    .info__article {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        color: aliceblue;
-    }
-
-    .info__article h1 {
-        margin: 0;
-        padding: 0;
-        font-size: 3rem;
-        color: rgb(165, 197, 255);
-        line-height: 50px;
-        margin: 10px 0 10px 0;
-    }
-
-    .info__icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        margin: 10px 0 0 0;
-        gap: 5px;
-        transition: gap 100ms ease;
-
-        a {
-            text-decoration: none;
-            cursor: pointer;
-            user-select: none;
+    <style>
+        .info__article {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
             color: aliceblue;
         }
-    }
 
-    .info__icon:hover {
-        gap: 15px;
-
-        a {
-            font-weight: 700;
+        .info__article h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 3rem;
+            color: rgb(165, 197, 255);
+            line-height: 50px;
+            margin: 10px 0 10px 0;
         }
-    }
 
-    .info__button {
-        width: 100%;
-        margin-top: 10px;
-    }
-</style>
+        .info__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            margin: 10px 0 0 0;
+            gap: 5px;
+            transition: gap 100ms ease;
+
+            a {
+                text-decoration: none;
+                cursor: pointer;
+                user-select: none;
+                color: aliceblue;
+            }
+        }
+
+        .info__icon:hover {
+            gap: 15px;
+
+            a {
+                font-weight: 700;
+            }
+        }
+
+        .info__button {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</GlassCard>

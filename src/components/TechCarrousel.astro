@@ -2,7 +2,7 @@
 import { IconBrandTypescript } from "@tabler/icons-react";
 import { IconBrandCss3 } from "@tabler/icons-react";
 import { IconSql } from "@tabler/icons-react";
-import { IconBrandGithubFilled } from "@tabler/icons-react";
+import { IconBrandGithub } from "@tabler/icons-react";
 import { IconBrandJavascript } from "@tabler/icons-react";
 import {
     IconBrandHtml5,
@@ -65,7 +65,7 @@ let icons = [
         title: "NodeJS",
     },
     {
-        item: IconBrandGithubFilled,
+        item: IconBrandGithub,
         size: 100,
         color: "#00000050",
         title: "Github",
@@ -93,34 +93,47 @@ let icons = [
 ];
 
 icons = [...icons, ...icons];
+
+// const tecnoClass =
+//     "bg-sky-400 " +
+//     "[--slider-width: 6000px] [--item-width:300px] [--animation-width: calc(var(--item-width) * -10)]  " +
+//     "md:[--item-width:200px; --slider-width: 4000px)] md:[--animation-width: calc(var(--item-width) * -10)] md:[]";
+
+const itemWidth = 300;
+const collapsedWidth = 150;
+
+const sliderWidth = icons.length * itemWidth;
+const collapsedSliderWidth = icons.length * collapsedWidth;
+
+const animationWidth = icons.length * -itemWidth;
+const collapsedAnimationWidth = icons.length * -collapsedWidth;
+
+const tecnoClass = `bg-sky-400 [--item-width:${itemWidth}px] sm:[--item-width:${collapsedWidth}px]`;
 ---
 
-<section class="tech__section">
-    <article class="tech__carrousel">
-        <div class="slider">
+<section id="technologies">
+    <div class="slider">
+        <div class="slide-track">
             {
                 icons.map((aux) => {
                     if (aux.item === Icon) {
-                        return (
-                            <div
-                                class="tech__item"
-                                style={`--color-1: ${aux.color};`}
-                            >
-                                <Icon
-                                    name={aux.name}
-                                    size={aux.size}
-                                    aria-label={aux.title + " Icon"}
-                                />
-                                <p class="tech__title">{aux.title}</p>
-                            </div>
-                        );
+                        <div class="slide" style={`--color-1: ${aux.color};`}>
+                            <Icon
+                                color={"white"}
+                                name={aux.name}
+                                size={aux.size}
+                                aria-label={aux.title + " Icon"}
+                            />
+                            <p class="tech__title">{aux.title}</p>
+                        </div>;
                     } else {
                         return (
                             <div
-                                class="tech__item"
+                                class="slide"
                                 style={`--color-1: ${aux.color};`}
                             >
                                 <aux.item
+                                    color={"white"}
                                     size={aux.size}
                                     aria-label={aux.title + " Icon"}
                                 />
@@ -131,46 +144,69 @@ icons = [...icons, ...icons];
                 })
             }
         </div>
-    </article>
+    </div>
 </section>
 
 <style>
-    .tech__section {
+    #technologies {
+        --animation-speed: 20s;
+    }
+
+    .slider {
+        background: #13151a;
+        height: 200px;
+        margin: auto;
         overflow: hidden;
-        width: 100vw;
-
-        --item-width: 300px;
-    }
-    .tech__carrousel {
-        animation: carrousel 30s linear infinite;
-
-        .slider {
-            height: 200px;
-            overflow: visible;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            width: calc(var(--item-width) * 20);
-        }
+        position: relative;
+        width: 1960px;
     }
 
-    .tech__item {
-        width: var(--item-width);
-        height: 130px;
+    .slider::before,
+    .slider::after {
+        background: linear-gradient(
+            to right,
+            #13151a 0%,
+            rgb(19, 21, 26, 0) 100%
+        );
+        content: "";
+        height: 200px;
+        position: absolute;
+        width: 200px;
+        z-index: 2;
+    }
+
+    .slider::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+    }
+
+    .slider::before {
+        left: 0;
+        top: 0;
+    }
+
+    .slide-track {
+        animation: scroll var(--animation-speed) linear infinite;
         display: flex;
-        margin: 35px;
+        width: calc(250px * 14);
+    }
+
+    .slide {
+        height: 200px;
+        width: 250px;
+        display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
+        justify-content: center;
     }
 
     .tech__title {
-        font-size: 1.2rem;
-        visibility: hidden;
+        font-size: 1.5rem;
+        color: transparent;
     }
 
-    .tech__item:hover {
+    .slide:hover {
         background: var(--color-1);
         background: radial-gradient(
             circle,
@@ -179,23 +215,16 @@ icons = [...icons, ...icons];
         );
 
         .tech__title {
-            visibility: visible;
+            color: white;
         }
     }
 
-    @keyframes carrousel {
+    @keyframes scroll {
         0% {
             transform: translateX(0);
         }
-
         100% {
-            transform: translateX(calc(var(--item-width) * -10));
-        }
-    }
-
-    @media (max-width: 1000px) {
-        .tech__carrousel {
-            --item-width: 150px;
+            transform: translateX(calc(-250px * 7));
         }
     }
 </style>

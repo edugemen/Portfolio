@@ -1,22 +1,14 @@
-<section class="glass-card">
+<section
+    class="flex flex-col bg-black/1 p-3 rounded-xl backdrop-blur-lg glass-card max-w-md"
+>
     <slot />
 </section>
 
 <style>
     .glass-card {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 10px;
-        border-radius: 15px;
-        backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-top: 1px solid rgba(255, 255, 255, 0.2);
         border-left: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
-        color: aliceblue;
     }
 </style>

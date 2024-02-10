@@ -1,0 +1,59 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import { getLangFromUrl, useTranslations } from "../../../lang/utils";
+import Footer from "../../../components/Footer.astro";
+import NavBar2 from "../../../components/NavBar2.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<ProjectLayout title="VAM">
+    <NavBar2 slot="navbar" />
+    <main slot="main" class="flex flex-col items-center w-2/3 mx-auto mt-24">
+        <img
+            class="w-full h-[500px] object-cover rounded-md mb-10"
+            src="/marcador_portada.webp"
+            alt=""
+        />
+        <section
+            class="text-white w-2/3 mb-10 border-l-2 border-white p-4 border-r-2 flex flex-col items-start"
+        >
+            <h2 class="text-3xl mb-3 text-blue-400">{t("projects.3.title")}</h2>
+            <p class="mb-3">{t("projects.3.description.1")}</p>
+        </section>
+        <img
+            class="w-full h-[500px] object-cover rounded-md mb-10"
+            src="/marcador_1.webp"
+            alt=""
+        />
+        <iframe
+            width="100%"
+            src="https://www.youtube.com/embed/Jo6rV2qgV90?si=TLs9yTiv1lW7v3z4"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        <img
+            class="w-full h-[500px] object-cover rounded-md mb-10"
+            src="/marcador_2.webp"
+            alt=""
+        />
+    </main>
+    <Footer slot="footer" />
+</ProjectLayout>
+
+<script>
+    let video = document.querySelector("iframe");
+
+    let width: number = video?.offsetWidth as number;
+
+    video?.setAttribute("height", (width * 9) / 16 + "px");
+
+    addEventListener("resize", () => {
+        width = video?.offsetWidth as number;
+
+        console.log(width);
+
+        video?.setAttribute("height", (width * 9) / 16 + "px");
+    });
+</script>

@@ -1,6 +1,5 @@
 ---
 import Card from "./Card.astro";
-import Text from "./Text";
 import { IconBrandHtml5 } from "@tabler/icons-react";
 import { IconBrandJavascript } from "@tabler/icons-react";
 import { IconBrandTypescript } from "@tabler/icons-react";
@@ -10,6 +9,9 @@ import { IconBrandNodejs } from "@tabler/icons-react";
 import { IconBrandGithubFilled } from "@tabler/icons-react";
 import { IconSql } from "@tabler/icons-react";
 import Icon from "astro-icon";
+import { getLangFromUrl, useTranslations } from "../lang/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const { img, title, icons, link, name } = Astro.props;
 
 let ICONS: {
@@ -122,7 +124,7 @@ let ICONS: {
                 })
             }
         </div>
-        <Text client:visible type="h4" id={title} />
+        <h4>{t(title)}</h4>
     </Card>
 </section>
 

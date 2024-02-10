@@ -1,0 +1,27 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import { getLangFromUrl, useTranslations } from "../../../lang/utils";
+import Footer from "../../../components/Footer.astro";
+import NavBar2 from "../../../components/NavBar2.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<ProjectLayout title="VAM">
+    <NavBar2 slot="navbar" />
+    <main slot="main" class="flex flex-col items-center w-2/3 mx-auto mt-24">
+        <img
+            class="w-full h-[500px] object-cover rounded-md mb-10"
+            src="/fabulab_portada.webp"
+            alt=""
+        />
+        <section
+            class="text-white w-2/3 mb-10 border-l-2 border-white p-4 border-r-2 flex flex-col items-start"
+        >
+            <h2 class="text-3xl mb-3 text-blue-400">{t("projects.2.title")}</h2>
+            <p class="mb-3">{t("projects.2.description.1")}</p>
+        </section>
+    </main>
+    <Footer slot="footer" />
+</ProjectLayout>

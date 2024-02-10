@@ -1,0 +1,20 @@
+---
+import BaseHeader from "./BaseHeader.astro";
+import { getLangFromUrl } from "../lang/utils";
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!doctype html>
+<html lang={lang}>
+    <head>
+        <BaseHeader title="Home" />
+    </head>
+    <body
+        class="flex flex-col min-h-screen bg-curve bg-top bg-no-repeat bg-contain bg-center bg-deep"
+    >
+        <slot name="navbar" />
+        <slot name="main" />
+        <slot name="footer" />
+    </body>
+</html>

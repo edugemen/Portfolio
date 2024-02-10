@@ -1,0 +1,42 @@
+---
+interface Props {
+    jobposition: string;
+    greatings_title: string;
+    greetings_description: string;
+    projects_title: string;
+    projects: [
+        {
+            title: string;
+            description: string;
+        },
+    ];
+    experience_title: string;
+    experience: [
+        {
+            title: string;
+            where: string;
+            when: string;
+            description: string;
+            link?: string;
+        },
+    ];
+    contact_title: string;
+    contact_name: string;
+    contact_email: string;
+    contact_message: string;
+}
+
+const {
+    jobposition,
+    greatings_title,
+    greetings_description,
+    projects_title,
+    projects,
+    experience_title,
+    experience,
+    contact_title,
+    contact_name,
+    contact_email,
+    contact_message,
+} = Astro.props;
+---

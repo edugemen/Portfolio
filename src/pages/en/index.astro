@@ -1,28 +1,21 @@
 ---
-import HomeLayout from "../layouts/HomeLayout.astro";
-import NavBar2 from "../components/NavBar2.astro";
-import InfoCard from "../components/InfoCard.astro";
-import Card from "../components/Card.astro";
-import { getLangFromUrl, useTranslations } from "../lang/utils";
-import TechCarrousel from "../components/TechCarrousel.astro";
-import ProjectSection from "../components/ProjectSection.astro";
-import ExpSection from "../components/ExpSection.astro";
-import Contacto from "../components/Contacto.astro";
-import Footer from "../components/Footer.astro";
-import Separator from "../components/reusables/Separator.astro";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+import NavBar2 from "../../components/NavBar2.astro";
+import InfoCard from "../../components/InfoCard.astro";
+import Card from "../../components/Card.astro";
+import { getLangFromUrl, useTranslations } from "../../lang/utils";
+import TechCarrousel from "../../components/TechCarrousel.astro";
+import ProjectSection from "../../components/ProjectSection.astro";
+import ExpSection from "../../components/ExpSection.astro";
+import Contacto from "../../components/Contacto.astro";
+import Footer from "../../components/Footer.astro";
+import Separator from "../../components/reusables/Separator.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <HomeLayout>
-    <NavBar2
-        homeText="Home"
-        projectsText="Projects"
-        experienceText="Experience"
-        contactText="Contact"
-        lang="en"
-        slot="navbar"
-    />
+    <NavBar2 slot="navbar" />
     <article
         id="main"
         slot="main"

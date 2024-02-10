@@ -1,12 +1,16 @@
 ---
-import Text from "./Text";
+import { getLangFromUrl, useTranslations } from "../lang/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<footer>
-    <Text client:visible type="h6" id="footer.copy" />
-    <Text client:visible type="h6" className="secondary" id="footer.github" />
+<footer
+    class="flex flex-row justify-center items-center gap-3 text-white text-base p-10"
+>
+    <h6>{t("footer.copy")}</h6>
+    <h6>{t("footer.github")}</h6>
     <a href="https://github.com/edugemen">
-        <Text client:visible type="h6" className="primary" id="footer.link" />
+        <h6 class="text-sky-400 hover:text-sky-100">{t("footer.link")}</h6>
     </a>
 </footer>
 

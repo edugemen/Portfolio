@@ -1,16 +1,31 @@
 ---
-import Text from "./Text";
+import { getLangFromUrl, useTranslations } from "../lang/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<form class="contact__form" method="POST">
-    <Text client:visible type="h4" id="contact.name" />
-    <input type="text" name="name" />
-    <Text client:visible type="h4" id="contact.email" />
-    <input type="email" name="mail" />
-    <Text client:visible type="h4" id="contact.message" />
-    <textarea name="message"></textarea>
-    <button type="submit" id="contact__button">
-        <Text client:visible type="h4" id="contact.send" />
+<form method="POST" class="flex flex-col gap-1 w-1/3 mx-auto">
+    <h4 class="font-bold text-lg text-white">{t("contact.name")}</h4>
+    <input
+        class="p-2 rounded-md border border-gray-300 mb-4"
+        type="text"
+        name="name"
+    />
+    <h4 class="font-bold text-lg text-white">{t("contact.email")}</h4>
+    <input
+        class="p-2 rounded-md border border-gray-300 mb-4"
+        type="email"
+        name="mail"
+    />
+    <h4 class="font-bold text-lg text-white">{t("contact.message")}</h4>
+    <textarea class="p-2 rounded-md border border-gray-300 mb-4" name="message"
+    ></textarea>
+    <button
+        class="p-2 w-32 bg-blue-600 rounded-md self-end hover:bg-blue-700"
+        type="submit"
+        id="contact__button"
+    >
+        <h4 class="font-bold text-lg text-white">{t("contact.send")}</h4>
     </button>
 </form>
 
@@ -18,36 +33,42 @@ import Text from "./Text";
     import emailjs from "@emailjs/browser";
     import { toast } from "sonner";
 
+    console.log("AAAAAAAA");
+
     emailjs.init("G7HORSmDTHt5bFrzO");
 
     const button = document.getElementById("contact__button");
 
     const form = document.querySelector("form");
 
-    form!.addEventListener("submit", (e) => {
-        e.preventDefault();
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-        if (!form) {
-            return;
-        } else if (!form?.reportValidity()) {
-            return;
-        }
+            if (!form) {
+                return;
+            } else if (!form?.reportValidity()) {
+                return;
+            }
 
-        button?.setAttribute("disabled", "true");
-        button!.textContent = "Sending...";
+            button?.setAttribute("disabled", "true");
+            button!.textContent = "Sending...";
 
-        emailjs.sendForm("service_4vlnrd5", "contact_form", form!).then(() => {
-            form!.reset();
+            emailjs
+                .sendForm("service_4vlnrd5", "contact_form", form!)
+                .then(() => {
+                    form!.reset();
 
-            button?.removeAttribute("disabled");
-            button!.textContent = "Send";
+                    button?.removeAttribute("disabled");
+                    button!.textContent = "Send";
 
-            toast.success("Message sent!");
+                    toast.success("Message sent!");
+                });
         });
-    });
+    }
 </script>
 
-<style>
+<!-- <style>
     .contact__form {
         display: flex;
         flex-direction: column;
@@ -95,4 +116,4 @@ import Text from "./Text";
             width: 90%;
         }
     }
-</style>
+</style> -->

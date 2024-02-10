@@ -1,83 +1,28 @@
 ---
-import Text from "./Text";
+import { getLangFromUrl, useTranslations } from "../lang/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const { img, title, empresa, date, description, link } = Astro.props;
 ---
 
-<section class="exp__section">
-    <img src={img} />
-    <div class="exp__text">
-        <Text client:visible type="h2" className="primary" id={title} />
-        <Text client:visible type="h3" id={empresa} />
-        <Text client:visible type="h4" className="secondary" id={date} />
-        <Text client:visible type="p" id={description} />
+<section class="flex flex-row gap-5 w-3/5 mx-auto">
+    <img class="w-52 h-52 rounded-full" src={img} />
+    <div class="flex flex-col font-bold">
+        <h2 class="text-3xl text-blue-600">{t(title)}</h2>
+        <h3 class="text-lg text-white">{t(empresa)}</h3>
+        <h4 class="text-lg text-gray-700">{t(date)}</h4>
+        <p class="font-normal text-base text-white">{t(description)}</p>
         {
             link && (
-                <a href={link} target="_blank" rel="noopener noreferrer">
+                <a
+                    class="text-lg text-sky-400 hover:text-sky-100 mt-3"
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Link
                 </a>
             )
         }
     </div>
 </section>
-
-<style>
-    .exp__section {
-        width: 60%;
-        display: flex;
-        justify-content: start;
-        align-items: start;
-        flex-direction: row;
-        padding: 20px;
-        gap: 20px;
-    }
-
-    .exp__section div {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-
-    .exp__section img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        align-self: center;
-    }
-
-    .exp__section h2 {
-        margin: 10px 0 10px 0;
-    }
-
-    .exp__section h3 {
-        margin: 0 0 5px 0;
-    }
-
-    a {
-        text-decoration: none;
-        color: rgb(87, 191, 255);
-        font-size: 1.2rem;
-        font-weight: bold;
-        transition: color 100ms ease;
-        margin-top: 10px;
-    }
-
-    a:hover {
-        color: rgb(255, 255, 255);
-    }
-
-    /* breakpoint between 550px and 800px */
-    @media (max-width: 1000px) {
-        .exp__section {
-            width: 90%;
-            flex-direction: column;
-        }
-
-        .exp__section img {
-            flex: 1;
-        }
-
-        .exp__text {
-            gap: 10px;
-        }
-    }
-</style>

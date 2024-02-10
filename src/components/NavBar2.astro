@@ -1,0 +1,55 @@
+---
+import Icon from "astro-icon";
+import {
+    getLangFromUrl,
+    translateUrl,
+    useTranslations,
+    getLocaleUrl,
+} from "../lang/utils";
+import { ES, GB } from "country-flag-icons/react/3x2";
+
+interface Props {
+    homeText: string;
+    projectsText: string;
+    experienceText: string;
+    contactText: string;
+    lang: "es" | "en";
+}
+
+translateUrl(Astro.url, "es");
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<nav
+    class="w-full h-12 fixed top-0 flex flex-row gap-4 justify-center items-center z-10 backdrop-blur-xl"
+>
+    <a
+        class="text-white text-l font-bold hover:text-gray-300"
+        href={getLocaleUrl(lang, "", true)}>{t("nav.home")}</a
+    >
+    <a
+        class="text-white text-l font-bold hover:text-gray-300"
+        href={getLocaleUrl(lang, "projects", true)}>{t("nav.projects")}</a
+    >
+    <a
+        class="text-white text-l font-bold hover:text-gray-300"
+        href={getLocaleUrl(lang, "experience", true)}>{t("nav.experience")}</a
+    >
+    <a
+        class="text-white text-l font-bold hover:text-gray-300"
+        href={getLocaleUrl(lang, "contact", true)}>{t("nav.contact")}</a
+    >
+    {
+        lang === "es" ? (
+            <button onclick="">
+                <Icon name="ES" size={30} />
+            </button>
+        ) : (
+            <button>
+                <Icon name="GB" size={30} />
+            </button>
+        )
+    }
+</nav>

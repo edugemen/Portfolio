@@ -1,30 +1,47 @@
-import { atom } from "nanostores";
 import esJSON from "./es.json";
 import enJSON from "./en.json";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-export const languages = {
-    es: {
-        name: "Espanol",
-        flag: "🇪🇸",
-    },
-    en: {
-        name: "English (US)",
-        flag: "🇺🇸",
-    },
+const ui = {
+    es: esJSON,
+    en: enJSON,
 };
 
-export type Language = keyof typeof languages;
+const defaultLang = "es";
 
-export const $selectedLanguage = atom<Language>("es");
+export type Language = keyof typeof ui;
 
-const ui: Record<Language, Record<string, string>> = {
-    en: enJSON,
-    es: esJSON,
-} as const;
+export function getLangFromUrl(url: URL) {
+    const [, lang] = url.pathname.split("/");
+    if (lang in ui) return lang as keyof typeof ui;
+    return defaultLang;
+}
 
-export const getTranslation: (key: string, language?: Language) => string = (
-    key: string,
-    language: Language = $selectedLanguage.get()
+export function translateUrl(url: URL, lang: keyof typeof ui) {
+    const [rest, path] = url.pathname.split("/");
+    console.log({ url, rest, path });
+
+    let res = getRelativeLocaleUrl(lang) + path;
+    console.log({ res });
+    return res;
+}
+
+export function useTranslations(lang: keyof typeof ui) {
+    return function t(key: keyof (typeof ui)[typeof defaultLang]) {
+        return ui[lang][key] || ui[defaultLang][key];
+    };
+}
+
+export const getLocaleUrl = (
+    locale: Language,
+    path: string,
+    isRelative: boolean = false
 ) => {
-    return ui[language][key];
+    let url = getRelativeLocaleUrl(locale);
+
+    if (isRelative) {
+        url = url.slice(0, -1) + "#";
+    }
+
+    return url + path;
 };
