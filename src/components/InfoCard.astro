@@ -33,7 +33,7 @@ import {
             class="button info__button"
             onclick="window.location.href='#contact'"
         >
-            <Text client:visible type={"none"} id="info.contact" />
+            <Text client:visible type="h4" id="info.contact" />
         </button>
     </article>
 </GlassCard>
@@ -41,6 +41,7 @@ import {
 <style>
     .info__article {
         width: 100%;
+        max-width: 400px;
         display: flex;
         flex-direction: column;
         align-items: start;
