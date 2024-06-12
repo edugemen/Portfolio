@@ -8,6 +8,8 @@
     "main.title": "Hola 👋!",
     "main.description": "Soy un desarrollador apasionado por el diseño web, siempre en busca de nuevas formas de mejorar mis aplicaciones. Busco proyectos emocionantes para poner en práctica mis habilidades y crear experiencias digitales excepcionales.",
 
+    "development": "En desarrollo",
+
     "projects.title": "Proyectos",
 
     "projects.readmore": "Leer más",
@@ -16,8 +18,10 @@
     "projects.1.description.2": "Está hecha con astro y React con TypeScript. También tiene un servidor hecho con Node.js que se encarga de descargar las nuevas imágenes que se suben al Instagram del equipo y las reduce para no ocupar mucho espacio. Por último, en la página web está conectado el marcador en directo del streaming que hacemos en Twitch.",
     "projects.2.title": "Aplicación de escritorio para recibir la lectura de un sensor y hacer algunas operaciones.",
     "projects.2.description.1": "Un amigo y yo hicimos este proyecto como freelancers para hacer lecturas de un sensor y hacer unos cálculos de mínimos en tiempo real. Es la primera vez que trabajaba utilizando Rust, pero me gustó mucho el entorno de Tauri y decidí usarlo. Fue un reto conseguir que la aplicación fuese fluida representando miles de puntos en gráficas. Yo hice la aplicación de escritorio, que se conectaba por wifi a un microcontrolador ESP32, que es lo que programó mi compañero.",
-    "projects.3.title": "Aplicación de móvil para controlar un marcador de voleibol.",
+    "projects.3.title": "Aplicación móvil para controlar un marcador de voleibol.",
     "projects.3.description.1": "También para el equipo de voleibol, dos amigos del equipo y yo decidimos desarrollar un marcador físico junto con uno que se viese en los streamings que hacemos en Twitch. Yo hice la aplicación móvil para controlar el marcador y un pequeño servidor hecho en Node.js al que se conectan el marcador online del streaming y el marcador físico. Fue un proyecto muy interesante y quedó bastante bien.",
+    "projects.4.title": "Aplicación hecha con React Native para utilizar sonidos y bandas sonoras en juegos de mesa.",
+    "projects.4.description.1": "Con esta app, se podrán hacer mucho mas inmersivas las partidas de rol y demás juegos de mesa al incorporar efectos sonoros en ellas. Tienes una canción puesta y quieres que llueva? Selecciona esos dos sonidos. Te subes a un barco tambien? Añade el sonido de la marea.",
 
     "experience.title": "Experiencia",
 

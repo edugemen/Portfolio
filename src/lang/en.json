@@ -8,6 +8,8 @@
     "main.title": "Hi 👋!",
     "main.description": "I'm a developer passionate about web design, always looking for new ways to improve my apps. I'm looking for exciting projects to put my skills to use and create exceptional digital experiences.",
 
+    "development": "In development",
+
     "projects.title": "Projects",
 
     "projects.readmore": "Read more",
@@ -18,6 +20,8 @@
     "projects.2.description.1": "A friend and I did this project as freelancers to take readings from a sensor and do some real time minimum calculations. It was the first time I worked using Rust, but I really liked the Tauri environment and decided to use it. It was a challenge to get the application to run smoothly with thousands of points on graphs. I made the desktop application, which connected via wifi to an ESP32 microcontroller, which is what my partner programmed.",
     "projects.3.title": "Mobile application to control a volleyball scoreboard.",
     "projects.3.description.1": "Also for the volleyball team, two friends of the team and I decided to develop a physical scoreboard along with one that would be seen in the streams we do on Twitch. I made the mobile app to control the scoreboard and a small server made in Node.js to which the online scoreboard for the streaming and the physical scoreboard are connected. It was a very interesting project and it turned out quite well.",
+    "projects.4.title": "React Native app for using sounds and soundtracks in board games.",
+    "projects.4.description.1": "With this app, role-playing games and other board games can be made much more immersive by incorporating sound effects into them. Do you have a song playing and want it to rain? Select those two sounds. Do you get on a boat too? Add the sound of the tide.",
 
     "experience.title": "Experience",
 

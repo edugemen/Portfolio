@@ -1,0 +1,92 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Text from "../../components/Text";
+---
+
+<Layout title="Dicebeats">
+    <main>
+        <img src="/dicebeats/dicebeats_portada.webp" alt="Portada web de VAM" />
+        <section class="text__section">
+            <Text
+                client:visible
+                type="h2"
+                className="primary"
+                id={"projects.4.title"}
+            />
+            <Text
+                client:visible
+                type="h4"
+                className="tertiary"
+                id={"projects.4.description.1"}
+            />
+            <Text
+                client:visible
+                type="h4"
+                className="secondary"
+                id={"development"}
+            />
+        </section>
+        <img
+            src="/dicebeats/dicebeats_1.webp"
+            alt="Captura de la web de VAM. Partido en directo y ultimas publicaciones."
+        />
+        <img
+            src="/dicebeats/dicebeats_2.webp"
+            alt="Capturas en formato movil. Los ultimos partidos y la clasificacion."
+        />
+    </main>
+</Layout>
+
+<style>
+    main {
+        margin: 100px auto 0;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        color: aliceblue;
+    }
+
+    .link {
+        color: #2f74c0;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .text__section {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        border-right: 2px solid white;
+        border-left: 2px solid white;
+        padding: 10px 20px;
+    }
+
+    @media screen and (max-width: 1000px) {
+        main {
+            width: 90%;
+        }
+
+        .text__section {
+            width: 85%;
+        }
+    }
+</style>
