@@ -43,20 +43,17 @@ const lang = getLangFromUrl(Astro.url);
             ><Text type="none" id="contact.send" /></span
         >
     </button>
+    <p id="contact__status" class="contact__status fs-4" role="status"></p>
 </form>
 
 <script>
-    import emailjs from "@emailjs/browser";
-    import { toast } from "sonner";
-
-    emailjs.init("G7HORSmDTHt5bFrzO");
-
     const form = document.getElementById("contact__form") as HTMLFormElement;
     const button = document.getElementById("contact__button") as HTMLButtonElement;
     const label = document.getElementById("contact__button-label")!;
+    const status = document.getElementById("contact__status")!;
     const idleText = label.textContent;
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         if (button.getAttribute("aria-disabled") === "true") {
@@ -70,19 +67,23 @@ const lang = getLangFromUrl(Astro.url);
         button.setAttribute("aria-disabled", "true");
         label.textContent = form.dataset.sending ?? "";
 
-        emailjs
-            .sendForm("service_4vlnrd5", "contact_form", form)
-            .then(() => {
-                form.reset();
-                toast.success(form.dataset.sent);
-            })
-            .catch(() => {
-                toast.error(form.dataset.error);
-            })
-            .finally(() => {
-                button.removeAttribute("aria-disabled");
-                label.textContent = idleText;
-            });
+        status.textContent = "";
+        status.dataset.state = "";
+
+        try {
+            const { default: emailjs } = await import("@emailjs/browser");
+            emailjs.init("G7HORSmDTHt5bFrzO");
+            await emailjs.sendForm("service_4vlnrd5", "contact_form", form);
+            form.reset();
+            status.textContent = form.dataset.sent ?? "";
+            status.dataset.state = "ok";
+        } catch {
+            status.textContent = form.dataset.error ?? "";
+            status.dataset.state = "error";
+        } finally {
+            button.removeAttribute("aria-disabled");
+            label.textContent = idleText;
+        }
     });
 </script>
 
@@ -137,6 +138,19 @@ const lang = getLangFromUrl(Astro.url);
     .contact__form :is(input, textarea, button):focus-visible {
         outline: 2px solid #4d9bff;
         outline-offset: 2px;
+    }
+
+    .contact__status {
+        margin: 12px 0 0;
+        color: #fff;
+    }
+
+    .contact__status[data-state="ok"] {
+        color: #6ee7a0;
+    }
+
+    .contact__status[data-state="error"] {
+        color: #ff8a8a;
     }
 
     @media (max-width: 700px) {

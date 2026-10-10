@@ -21,5 +21,7 @@ export default defineConfig({
         }),
     ],
     output: "static",
+    build: { inlineStylesheets: "always" },
+    vite: { build: { assetsInlineLimit: 0 } },
     adapter: vercel(),
 });

@@ -1,7 +1,6 @@
 ---
 import "@fontsource-variable/inter";
 import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
-import { Toaster } from "sonner";
 import NavBar from "../components/NavBar.astro";
 import "../components/text.css";
 import {
@@ -107,7 +106,6 @@ const otherLang = (Object.keys(languages) as Language[]).find((l) => l !== lang)
         <a class="skip-link" href="#main">{getTranslation("nav.skip", lang)}</a>
         <NavBar />
         <slot />
-        <Toaster client:idle />
 
         <script>
             const cards = Array.from(
