@@ -49,6 +49,8 @@
     "nav.skip": "Skip to content",
     "nav.menu": "Menu",
     "nav.language": "Language: English. Switch to Spanish",
+    "nav.switch": "Switch to English",
+    "link.newtab": "(opens in a new tab)",
     "experience.link": "View project",
     "contact.sending": "Sending...",
     "contact.sent": "Message sent!",

@@ -25,7 +25,10 @@ const image = getImage(img);
             link && (
                 <a href={link} target="_blank" rel="noopener noreferrer">
                     <Text type="none" id="experience.link" />
-                    <span class="sr-only"> - <Text type="none" id={empresa} /></span>
+                    <span class="sr-only">
+                        - <Text type="none" id={empresa} />
+                        {getTranslation("link.newtab", lang)}
+                    </span>
                 </a>
             )
         }

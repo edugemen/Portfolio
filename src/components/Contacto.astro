@@ -9,6 +9,7 @@ const lang = getLangFromUrl(Astro.url);
     class="contact__form"
     id="contact__form"
     method="POST"
+    aria-label={getTranslation("contact.title", lang)}
     data-sending={getTranslation("contact.sending", lang)}
     data-sent={getTranslation("contact.sent", lang)}
     data-error={getTranslation("contact.error", lang)}
@@ -58,11 +59,15 @@ const lang = getLangFromUrl(Astro.url);
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        if (button.getAttribute("aria-disabled") === "true") {
+            return;
+        }
+
         if (!form.reportValidity()) {
             return;
         }
 
-        button.disabled = true;
+        button.setAttribute("aria-disabled", "true");
         label.textContent = form.dataset.sending ?? "";
 
         emailjs
@@ -75,7 +80,7 @@ const lang = getLangFromUrl(Astro.url);
                 toast.error(form.dataset.error);
             })
             .finally(() => {
-                button.disabled = false;
+                button.removeAttribute("aria-disabled");
                 label.textContent = idleText;
             });
     });
@@ -122,6 +127,16 @@ const lang = getLangFromUrl(Astro.url);
 
     .contact__form button:hover {
         background-color: #004fa8;
+    }
+
+    .contact__form button[aria-disabled="true"] {
+        opacity: 0.6;
+        cursor: progress;
+    }
+
+    .contact__form :is(input, textarea, button):focus-visible {
+        outline: 2px solid #4d9bff;
+        outline-offset: 2px;
     }
 
     @media (max-width: 700px) {

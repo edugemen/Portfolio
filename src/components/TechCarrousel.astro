@@ -92,45 +92,41 @@ let icons = [
     },
 ];
 
+const uniqueCount = icons.length;
 icons = [...icons, ...icons];
 ---
 
 <section class="tech__section">
     <article class="tech__carrousel">
-        <div class="slider">
+        <ul class="slider">
             {
-                icons.map((aux) => {
-                    if (aux.item === Icon) {
-                        return (
-                            <div
-                                class="tech__item"
-                                style={`--color-1: ${aux.color};`}
-                            >
+                icons.map((aux, i) => {
+                    // The second half only exists for the infinite loop.
+                    const duplicate = i >= uniqueCount;
+                    return (
+                        <li
+                            class="tech__item"
+                            style={`--color-1: ${aux.color};`}
+                            aria-hidden={duplicate ? "true" : undefined}
+                        >
+                            {aux.item === Icon ? (
                                 <Icon
                                     name={aux.name}
                                     size={aux.size}
-                                    aria-label={aux.title + " Icon"}
+                                    aria-hidden="true"
                                 />
-                                <p class="tech__title">{aux.title}</p>
-                            </div>
-                        );
-                    } else {
-                        return (
-                            <div
-                                class="tech__item"
-                                style={`--color-1: ${aux.color};`}
-                            >
+                            ) : (
                                 <aux.item
                                     size={aux.size}
-                                    aria-label={aux.title + " Icon"}
+                                    aria-hidden="true"
                                 />
-                                <p class="tech__title">{aux.title}</p>
-                            </div>
-                        );
-                    }
+                            )}
+                            <p class="tech__title">{aux.title}</p>
+                        </li>
+                    );
                 })
             }
-        </div>
+        </ul>
     </article>
 </section>
 
@@ -153,6 +149,9 @@ icons = [...icons, ...icons];
             justify-content: center;
             align-items: center;
             width: calc(var(--item-width) * 20);
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
     }
 
@@ -168,7 +167,7 @@ icons = [...icons, ...icons];
 
     .tech__title {
         font-size: 1.2rem;
-        visibility: hidden;
+        opacity: 0;
     }
 
     .tech__item:hover {
@@ -180,7 +179,7 @@ icons = [...icons, ...icons];
         );
 
         .tech__title {
-            visibility: visible;
+            opacity: 1;
         }
     }
 

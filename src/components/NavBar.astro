@@ -13,10 +13,11 @@ const lang = getLangFromUrl(Astro.url);
 const other = lang === "es" ? "en" : "es";
 const home = localizedPath("/", lang);
 const switchHref = localizedPath(stripLang(Astro.url.pathname), other);
+const isHome = stripLang(Astro.url.pathname) === "/";
 ---
 
 <nav class="topnav" id="myTopnav" aria-label="Principal">
-    <a href={home}>
+    <a href={home} aria-current={isHome ? "page" : undefined}>
         <Text type="span" size={4} id="nav.home" />
     </a>
     <a href={`${home}#experience`}>
@@ -33,7 +34,7 @@ const switchHref = localizedPath(stripLang(Astro.url.pathname), other);
         href={switchHref}
         hreflang={other}
         lang={other}
-        aria-label={getTranslation("nav.language", lang)}
+        aria-label={getTranslation("nav.switch", other)}
     >
         {lang === "en" ? <GB aria-hidden="true" /> : <ES aria-hidden="true" />}
     </a>

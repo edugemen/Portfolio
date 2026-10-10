@@ -2,12 +2,15 @@
 import Avatar from "./Avatar.astro";
 import Text from "./Text.astro";
 import "./styles.css";
+import { getLangFromUrl, getTranslation } from "../lang/utils";
 import GlassCard from "./reusables/GlassCard.astro";
 import {
     IconBrandGithub,
     IconMail,
     IconBrandLinkedin,
 } from "@tabler/icons-react";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <GlassCard>
@@ -16,18 +19,22 @@ import {
         <h1>Eduardo Guerrero</h1>
         <Text type="p" size={3} id="info.dev" />
         <div class="info__icon">
-            <IconBrandGithub />
+            <IconBrandGithub aria-hidden="true" />
             <a href="https://github.com/edugemen">Github</a>
         </div>
         <div class="info__icon">
-            <IconMail />
+            <IconMail aria-hidden="true" />
             <a
                 href="https://mail.google.com/mail/?view=cm&source=mailto&to=edugemen@gmail.com"
-                >Gmail</a
+                target="_blank"
+                rel="noopener noreferrer"
+                >Gmail<span class="sr-only">
+                    {getTranslation("link.newtab", lang)}</span
+                ></a
             >
         </div>
         <div class="info__icon">
-            <IconBrandLinkedin />
+            <IconBrandLinkedin aria-hidden="true" />
             <a href="https://www.linkedin.com/in/edugemen/">Linkedin</a>
         </div>
         <a class="button info__button" href="#contact">
