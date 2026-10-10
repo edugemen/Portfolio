@@ -1,0 +1,115 @@
+.primary {
+    color: #4d9bff;
+}
+
+.secondary {
+    color: #9ca3af;
+}
+
+.tertiary {
+    color: #f9f9f9;
+}
+
+.center {
+    text-align: center;
+}
+
+.pb-1 {
+    padding-bottom: 1rem;
+}
+
+.right {
+    align-self: flex-end;
+    margin-top: 1rem;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+/* Visual size, independent from the heading level */
+.fs-1 {
+    font-size: 48px;
+}
+
+.fs-2 {
+    font-size: 36px;
+}
+
+.fs-3 {
+    font-size: 24px;
+}
+
+.fs-4 {
+    font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 8px;
+    z-index: 10;
+    padding: 8px 16px;
+    background: #fff;
+    color: #13151a;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.skip-link:focus {
+    top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.fs-6 {
+    font-size: 12px;
+}

@@ -1,24 +1,23 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Text from "../../components/Text";
+import Layout from "../../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getImage } from "../../../lib/images";
+import Text from "../../../components/Text.astro";
+import { getLangFromUrl, getTranslation } from "../../../lang/utils";
+
+export function getStaticPaths() {
+    return [{ params: { lang: undefined } }, { params: { lang: "en" } }];
+}
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<Layout title="Sensor ESP32">
-    <main>
-        <img src="/fabulab_portada.webp" alt="Portada fabulab" />
+<Layout title={`Sensor ESP32 | Eduardo Guerrero`} description={getTranslation("projects.2.title", lang)}>
+    <main id="main">
+        <Image src={getImage("fabulab_portada.webp")} widths={[800, 1200, 1920]} sizes="(max-width: 1000px) 90vw, 60vw" loading="eager" fetchpriority="high" alt="Portada fabulab" />
         <section class="text__section">
-            <Text
-                client:visible
-                type="h2"
-                className="primary"
-                id={"projects.2.title"}
-            />
-            <Text
-                client:visible
-                type="h4"
-                className="tertiary"
-                id={"projects.2.description.1"}
-            />
+            <Text type="h1" size={2} class="primary" id="projects.2.title" />
+            <Text type="p" size={4} class="tertiary" id="projects.2.description.1" />
         </section>
     </main>
 </Layout>

@@ -1,15 +1,5 @@
-.lang-selector {
-    width: 40px;
-    height: 40px;
-    font-size: 30px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding-bottom: 5px;
-}
-
 .button {
-    background-color: #0070f3;
+    background-color: #005fcc;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -21,5 +11,5 @@
 }
 
 .button:hover {
-    background-color: #0052cc;
+    background-color: #004fa8;
 }

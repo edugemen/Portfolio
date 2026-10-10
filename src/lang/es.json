@@ -7,11 +7,8 @@
     "info.contact": "Contáctame",
     "main.title": "Hola 👋!",
     "main.description": "Soy un desarrollador apasionado por el diseño web, siempre en busca de nuevas formas de mejorar mis aplicaciones. Busco proyectos emocionantes para poner en práctica mis habilidades y crear experiencias digitales excepcionales.",
-
     "development": "En desarrollo",
-
     "projects.title": "Proyectos",
-
     "projects.readmore": "Leer más",
     "projects.1.title": "Aplicación web para un equipo de voleibol.",
     "projects.1.description.1": "Esta página web la hice para mi equipo de voleibol y en la cual se muestra la clasificación de la liga en la que jugamos, así como los partidos que llevamos jugados y los que nos quedan.",
@@ -22,36 +19,38 @@
     "projects.3.description.1": "También para el equipo de voleibol, dos amigos del equipo y yo decidimos desarrollar un marcador físico junto con uno que se viese en los streamings que hacemos en Twitch. Yo hice la aplicación móvil para controlar el marcador y un pequeño servidor hecho en Node.js al que se conectan el marcador online del streaming y el marcador físico. Fue un proyecto muy interesante y quedó bastante bien.",
     "projects.4.title": "Aplicación hecha con React Native para utilizar sonidos y bandas sonoras en juegos de mesa.",
     "projects.4.description.1": "Con esta app, se podrán hacer mucho mas inmersivas las partidas de rol y demás juegos de mesa al incorporar efectos sonoros en ellas. Tienes una canción puesta y quieres que llueva? Selecciona esos dos sonidos. Te subes a un barco tambien? Añade el sonido de la marea.",
-
     "experience.title": "Experiencia",
-
     "experience.1.title": "GUI para lectura de un sensor médico",
     "experience.1.empresa": "Johnson & Johnson",
     "experience.1.date": "Agosto 2023 - Octubre 2023",
     "experience.1.description": "Desarrollé una aplicación de escritorio hecha con Tauri (ReactJS + Rust), en la que se mostraba la lectura de un sensor y tambien se trataban los datos. Trabajé con otro programador que se encargó del microcontrolador para el sensor. Me aseguré de que el usuario tuviese una experiencia fluida y agradable.",
-
     "experience.2.title": "Blockchain privada para medir aportación de stakers",
     "experience.2.empresa": "Decentralized Security SL",
     "experience.2.date": "Julio 2021 - Septiembre 2022",
     "experience.2.description": "Trabajé en un proyecto de blockchain privada, usando como base Tendermint. Hice contratos inteligentes para un proyecto de la empresa relacionado con el control de la participación de los stakers en la red. Además, también aproveché la oportunidad para llevar a cabo mi trabajo de fin de grado, centrado en el uso de la blockchain para votaciones online.",
-
     "experience.3.title": "2º puesto en la hackathon EthOdyssey",
     "experience.3.empresa": "EthOdyssey",
     "experience.3.date": "Julio 2021",
     "experience.3.description": "Presenté el trabajo hecho en las prácticas de la universidad y quedé en segundo puesto en la categoria de NuCypher.",
-
     "experience.4.title": "Prácticas en empresa",
     "experience.4.empresa": "Decentralized Security SL",
     "experience.4.date": "Marzo 2021 - Junio 2021",
     "experience.4.description": "Aprendí sobre el ecosistema blockchain y la arquitectura Web3, además de desarrollar algunos contratos inteligentes con Solidity.",
-
     "contact.title": "Contáctame",
     "contact.name": "Nombre",
     "contact.email": "Correo",
     "contact.message": "Mensaje",
     "contact.send": "Enviar",
-
     "footer.copy": "Copyright © 2023 Eduardo Guerrero Méndez.",
     "footer.github": "GitHub del portfolio: ",
-    "footer.link": "Link"
+    "footer.link": "github.com/edugemen",
+    "meta.title": "Eduardo Guerrero | Desarrollador frontend",
+    "meta.description": "Soy Eduardo Guerrero, desarrollador frontend apasionado por el diseño web, siempre en busca de nuevas formas de mejorar.",
+    "nav.skip": "Saltar al contenido",
+    "nav.menu": "Menú",
+    "nav.language": "Idioma: Español. Cambiar a inglés",
+    "experience.link": "Ver proyecto",
+    "contact.sending": "Enviando...",
+    "contact.sent": "¡Mensaje enviado!",
+    "contact.error": "No se pudo enviar el mensaje."
 }

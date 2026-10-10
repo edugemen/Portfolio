@@ -1,12 +1,12 @@
 ---
-import Text from "./Text";
+import Text from "./Text.astro";
 ---
 
 <footer>
-    <Text client:visible type="h6" id="footer.copy" />
-    <Text client:visible type="h6" className="secondary" id="footer.github" />
+    <Text type="span" size={6} id="footer.copy" />
+    <Text type="span" size={6} class="secondary" id="footer.github" />
     <a href="https://github.com/edugemen">
-        <Text client:visible type="h6" className="primary" id="footer.link" />
+        <Text type="span" size={6} class="primary" id="footer.link" />
     </a>
 </footer>
 

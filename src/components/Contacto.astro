@@ -1,10 +1,20 @@
 ---
-import Text from "./Text";
+import Text from "./Text.astro";
+import { getLangFromUrl, getTranslation } from "../lang/utils";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<form class="contact__form" method="POST">
+<form
+    class="contact__form"
+    id="contact__form"
+    method="POST"
+    data-sending={getTranslation("contact.sending", lang)}
+    data-sent={getTranslation("contact.sent", lang)}
+    data-error={getTranslation("contact.error", lang)}
+>
     <label for="contact__name">
-        <Text client:visible type="h4" id="contact.name" />
+        <Text type="span" size={4} id="contact.name" />
     </label>
     <input
         type="text"
@@ -14,7 +24,7 @@ import Text from "./Text";
         required
     />
     <label for="contact__mail">
-        <Text client:visible type="h4" id="contact.email" />
+        <Text type="span" size={4} id="contact.email" />
     </label>
     <input
         type="email"
@@ -24,11 +34,13 @@ import Text from "./Text";
         required
     />
     <label for="contact__message">
-        <Text client:visible type="h4" id="contact.message" />
+        <Text type="span" size={4} id="contact.message" />
     </label>
     <textarea id="contact__message" name="message" required></textarea>
     <button type="submit" id="contact__button">
-        <Text client:visible type="h4" id="contact.send" />
+        <span id="contact__button-label" class="fs-4"
+            ><Text type="none" id="contact.send" /></span
+        >
     </button>
 </form>
 
@@ -38,34 +50,33 @@ import Text from "./Text";
 
     emailjs.init("G7HORSmDTHt5bFrzO");
 
-    const button = document.getElementById("contact__button");
+    const form = document.getElementById("contact__form") as HTMLFormElement;
+    const button = document.getElementById("contact__button") as HTMLButtonElement;
+    const label = document.getElementById("contact__button-label")!;
+    const idleText = label.textContent;
 
-    const form = document.querySelector("form");
-
-    form!.addEventListener("submit", (e) => {
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        if (!form) {
-            return;
-        } else if (!form?.reportValidity()) {
+        if (!form.reportValidity()) {
             return;
         }
 
-        button?.setAttribute("disabled", "true");
-        button!.textContent = "Sending...";
+        button.disabled = true;
+        label.textContent = form.dataset.sending ?? "";
 
         emailjs
-            .sendForm("service_4vlnrd5", "contact_form", form!)
+            .sendForm("service_4vlnrd5", "contact_form", form)
             .then(() => {
-                form!.reset();
-                toast.success("Message sent!");
+                form.reset();
+                toast.success(form.dataset.sent);
             })
             .catch(() => {
-                toast.error("The message could not be sent.");
+                toast.error(form.dataset.error);
             })
             .finally(() => {
-                button?.removeAttribute("disabled");
-                button!.textContent = "Send";
+                button.disabled = false;
+                label.textContent = idleText;
             });
     });
 </script>
@@ -101,7 +112,7 @@ import Text from "./Text";
         padding: 10px 20px;
         border-radius: 5px;
         border: none;
-        background-color: #007bff;
+        background-color: #005fcc;
         color: #fff;
         font-size: 16px;
         cursor: pointer;
@@ -110,7 +121,7 @@ import Text from "./Text";
     }
 
     .contact__form button:hover {
-        background-color: #0062cc;
+        background-color: #004fa8;
     }
 
     @media (max-width: 700px) {

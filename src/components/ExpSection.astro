@@ -1,28 +1,31 @@
 ---
-import Text from "./Text";
-import { getTranslation } from "../lang/utils";
+import { Image } from "astro:assets";
+import Text from "./Text.astro";
+import { getImage } from "../lib/images";
+import { getLangFromUrl, getTranslation } from "../lang/utils";
 const { img, title, empresa, date, description, link } = Astro.props;
-const size = Number(img.endsWith("dsecurity.jpg") ? 200 : img.includes("devfolio") ? 400 : 600);
+const lang = getLangFromUrl(Astro.url);
+const image = getImage(img);
 ---
 
 <section class="exp__section">
-    <img
-        src={img}
-        alt={getTranslation(empresa, "es")}
-        width={size}
-        height={size}
+    <Image
+        src={image}
+        alt={getTranslation(empresa, lang)}
+        width={400}
         loading="lazy"
         decoding="async"
     />
     <div class="exp__text">
-        <Text client:visible type="h2" className="primary" id={title} />
-        <Text client:visible type="h3" id={empresa} />
-        <Text client:visible type="h4" className="secondary" id={date} />
-        <Text client:visible type="p" id={description} />
+        <Text type="h3" size={2} class="primary" id={title} />
+        <Text type="p" size={3} id={empresa} />
+        <Text type="p" size={4} class="secondary" id={date} />
+        <Text type="p" id={description} />
         {
             link && (
                 <a href={link} target="_blank" rel="noopener noreferrer">
-                    Link
+                    <Text type="none" id="experience.link" />
+                    <span class="sr-only"> - <Text type="none" id={empresa} /></span>
                 </a>
             )
         }
@@ -53,11 +56,14 @@ const size = Number(img.endsWith("dsecurity.jpg") ? 200 : img.includes("devfolio
         align-self: center;
     }
 
-    .exp__section h2 {
+    .exp__section h3 {
+        margin: 10px 0 10px 0;
+    }
+    .exp__section h3_old {
         margin: 10px 0 10px 0;
     }
 
-    .exp__section h3 {
+    .exp__section p {
         margin: 0 0 5px 0;
     }
 

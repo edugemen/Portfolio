@@ -1,59 +1,75 @@
 ---
 import Icon from "astro-icon";
-import LangSelector from "./LangSelector";
-import Text from "./Text";
+import { ES, GB } from "country-flag-icons/react/3x2";
+import Text from "./Text.astro";
+import {
+    getLangFromUrl,
+    getTranslation,
+    localizedPath,
+    stripLang,
+} from "../lang/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const other = lang === "es" ? "en" : "es";
+const home = localizedPath("/", lang);
+const switchHref = localizedPath(stripLang(Astro.url.pathname), other);
 ---
 
-<nav class="topnav" id="myTopnav">
-    <!-- <ul > -->
-    <a href="/#" class="active">
-        <Text client:load type="h4" id="nav.home" />
+<nav class="topnav" id="myTopnav" aria-label="Principal">
+    <a href={home}>
+        <Text type="span" size={4} id="nav.home" />
     </a>
-    <a href="/#experience">
-        <Text client:load type="h4" id="nav.experience" />
+    <a href={`${home}#experience`}>
+        <Text type="span" size={4} id="nav.experience" />
     </a>
-    <a href="/#projects">
-        <Text client:load type="h4" id="nav.projects" />
+    <a href={`${home}#projects`}>
+        <Text type="span" size={4} id="nav.projects" />
     </a>
-    <a href="/#contact">
-        <Text client:load type="h4" id="nav.contact" />
+    <a href={`${home}#contact`}>
+        <Text type="span" size={4} id="nav.contact" />
     </a>
-    <LangSelector client:visible />
+    <a
+        class="lang-selector"
+        href={switchHref}
+        hreflang={other}
+        lang={other}
+        aria-label={getTranslation("nav.language", lang)}
+    >
+        {lang === "en" ? <GB aria-hidden="true" /> : <ES aria-hidden="true" />}
+    </a>
     <button
         id="menu"
         type="button"
-        aria-label="Menu"
+        aria-label={getTranslation("nav.menu", lang)}
         aria-controls="myTopnav"
         aria-expanded="false"
     >
         <Icon name="menu" size={30} />
     </button>
-    <!-- <a href="javascript:void(0);" id="menu" class="icon">
-        <i class="fa fa-bars"></i>
-    </a> -->
-    <!-- </ul> -->
 </nav>
 
 <script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav")!;
-        var menu = document.getElementById("menu")!;
-        if (x.className === "topnav") {
-            x.className += " responsive";
-            menu.setAttribute("aria-expanded", "true");
-            window.onscroll = function () {
-                x.className = "topnav";
-                menu.setAttribute("aria-expanded", "false");
-            };
-        } else {
-            x.className = "topnav";
-            menu.setAttribute("aria-expanded", "false");
-        }
-    }
+    const nav = document.getElementById("myTopnav")!;
+    const menu = document.getElementById("menu")!;
 
-    document.getElementById("menu")?.addEventListener("click", () => {
-        myFunction();
+    const setOpen = (open: boolean) => {
+        nav.classList.toggle("responsive", open);
+        menu.setAttribute("aria-expanded", String(open));
+    };
+
+    menu.addEventListener("click", () => {
+        setOpen(menu.getAttribute("aria-expanded") !== "true");
     });
+    addEventListener("scroll", () => setOpen(false), { passive: true });
+    addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            setOpen(false);
+            menu.focus();
+        }
+    });
+    nav.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => setOpen(false))
+    );
 </script>
 
 <style>
@@ -71,6 +87,15 @@ import Text from "./Text";
         backdrop-filter: blur(20px);
         mask: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.966) 5%);
         z-index: 3;
+    }
+
+    .lang-selector {
+        padding: 0 0.5em;
+    }
+
+    .lang-selector :global(svg) {
+        width: 30px;
+        height: auto;
     }
 
     ul {
@@ -117,7 +142,7 @@ import Text from "./Text";
     }
 
     @media (max-width: 700px) {
-        nav a {
+        nav a:not(.lang-selector) {
             display: none;
         }
         nav #menu {
@@ -129,11 +154,9 @@ import Text from "./Text";
             height: auto;
             padding: 20px 0;
         }
-        nav.responsive #menu {
-            display: none;
-        }
         nav.responsive a {
-            display: block;
+            display: flex;
+            justify-content: center;
             margin: 10px 0;
         }
     }

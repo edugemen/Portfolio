@@ -1,6 +1,7 @@
 ---
 import Avatar from "./Avatar.astro";
-import Text from "./Text";
+import Text from "./Text.astro";
+import "./styles.css";
 import GlassCard from "./reusables/GlassCard.astro";
 import {
     IconBrandGithub,
@@ -13,7 +14,7 @@ import {
     <Avatar size={"300px"} />
     <article class="info__article">
         <h1>Eduardo Guerrero</h1>
-        <Text client:visible type="h3" id={"info.dev"} />
+        <Text type="p" size={3} id="info.dev" />
         <div class="info__icon">
             <IconBrandGithub />
             <a href="https://github.com/edugemen">Github</a>
@@ -29,12 +30,9 @@ import {
             <IconBrandLinkedin />
             <a href="https://www.linkedin.com/in/edugemen/">Linkedin</a>
         </div>
-        <button
-            class="button info__button"
-            onclick="window.location.href='#contact'"
-        >
-            <Text client:visible type="h4" id="info.contact" />
-        </button>
+        <a class="button info__button" href="#contact">
+            <Text type="span" size={4} id="info.contact" />
+        </a>
     </article>
 </GlassCard>
 
@@ -83,6 +81,9 @@ import {
     }
 
     .info__button {
+        box-sizing: border-box;
+        text-align: center;
+        text-decoration: none;
         width: 100%;
         margin-top: 10px;
     }

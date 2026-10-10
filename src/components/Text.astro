@@ -1,0 +1,19 @@
+---
+import { getLangFromUrl, getTranslation } from "../lang/utils";
+
+interface Props {
+    id: string;
+    /** Rendered element: h1-h6, p, span or "none" for bare text. */
+    type?: string;
+    /** Visual size, independent from the semantic level: 1-4. */
+    size?: number;
+    class?: string;
+}
+
+const { id, type = "span", size, class: className } = Astro.props;
+const text = getTranslation(id, getLangFromUrl(Astro.url));
+const Tag = type as any;
+const classes = [className, size ? `fs-${size}` : ""].filter(Boolean).join(" ");
+---
+
+{type === "none" ? text : <Tag class={classes || undefined}>{text}</Tag>}
