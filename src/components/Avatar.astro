@@ -1,16 +1,14 @@
 ---
 const { size } = Astro.props;
-import { Icon } from "astro-icon";
-
-// const { default: innerHTML } = await import(`../assets/avatar.svg?raw`);
+import AvatarSvg from "../icons/avatar.svg";
 ---
 
 <div class="avatar" aria-hidden="true">
-    <Icon name="avatar" />
+    <AvatarSvg />
 </div>
 
 <style define:vars={{ size }}>
-    [astro-icon] {
+    .avatar :global(svg) {
         width: var(--size);
         height: var(--size);
         position: absolute;

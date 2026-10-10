@@ -13,7 +13,9 @@ import { IconBrandReact } from "@tabler/icons-react";
 import { IconBrandNodejs } from "@tabler/icons-react";
 import { IconBrandGithubFilled } from "@tabler/icons-react";
 import { IconSql } from "@tabler/icons-react";
-import Icon from "astro-icon";
+import TauriIcon from "../icons/tauri.svg";
+import AstroIcon from "../icons/astro.svg";
+import CapacitorIcon from "../icons/capacitor.svg";
 const { img, title, icons, link } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 
@@ -23,7 +25,7 @@ let ICONS: {
         size: number;
         color: string;
         title: string;
-        name?: string;
+        svg?: boolean;
     };
 } = {
     html: {
@@ -75,28 +77,25 @@ let ICONS: {
         title: "SQL",
     },
     tauri: {
-        item: Icon,
-
+        item: TauriIcon,
         size: 30,
         color: "#23C2D450",
         title: "Tauri",
-        name: "tauri",
+        svg: true,
     },
     astro: {
-        item: Icon,
-
+        item: AstroIcon,
         size: 30,
         color: "#F7590150",
         title: "Astro",
-        name: "astro",
+        svg: true,
     },
     capacitor: {
-        item: Icon,
-
+        item: CapacitorIcon,
         size: 30,
         color: "#F7590150",
         title: "Capacitor",
-        name: "capacitor",
+        svg: true,
     },
     reactnative: {
         item: IconBrandReactNative,
@@ -121,25 +120,20 @@ let ICONS: {
         <div class="proj__tecnologies" role="img" aria-label={icons.map((i: string) => ICONS[i].title).join(", ")}>
             {
                 icons.map((aux: string) => {
-                    if (ICONS[aux].item === Icon) {
-                        return (
-                            <Icon
-                                name={ICONS[aux].name}
-                                size={ICONS[aux].size}
-                                color="white"
-                                aria-hidden="true"
-                            />
-                        );
-                    } else {
-                        const IconComponent = ICONS[aux].item;
-                        return (
-                            <IconComponent
-                                size={ICONS[aux].size}
-                                color="white"
-                                aria-hidden="true"
-                            />
-                        );
-                    }
+                    const IconComponent = ICONS[aux].item;
+                    return ICONS[aux].svg ? (
+                        <IconComponent
+                            width={ICONS[aux].size}
+                            height={ICONS[aux].size}
+                            aria-hidden="true"
+                        />
+                    ) : (
+                        <IconComponent
+                            size={ICONS[aux].size}
+                            color="white"
+                            aria-hidden="true"
+                        />
+                    );
                 })
             }
         </div>

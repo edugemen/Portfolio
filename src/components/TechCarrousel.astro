@@ -9,7 +9,8 @@ import {
     IconBrandNodejs,
     IconBrandReact,
 } from "@tabler/icons-react";
-import Icon from "astro-icon";
+import TauriIcon from "../icons/tauri.svg";
+import AstroIcon from "../icons/astro.svg";
 
 // let icons = [
 //     `<IconBrandHtml5 />`,
@@ -77,18 +78,18 @@ let icons = [
         title: "SQL",
     },
     {
-        item: Icon,
-        name: "tauri",
+        item: TauriIcon,
         size: 90,
         color: "#23C2D450",
         title: "Tauri",
+        svg: true,
     },
     {
-        item: Icon,
-        name: "astro",
+        item: AstroIcon,
         size: 90,
         color: "#F7590150",
         title: "Astro",
+        svg: true,
     },
 ];
 
@@ -109,10 +110,10 @@ icons = [...icons, ...icons];
                             style={`--color-1: ${aux.color};`}
                             aria-hidden={duplicate ? "true" : undefined}
                         >
-                            {aux.item === Icon ? (
-                                <Icon
-                                    name={aux.name}
-                                    size={aux.size}
+                            {aux.svg ? (
+                                <aux.item
+                                    width={aux.size}
+                                    height={aux.size}
                                     aria-hidden="true"
                                 />
                             ) : (

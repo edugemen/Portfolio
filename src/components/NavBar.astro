@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import MenuIcon from "../icons/menu.svg";
 import { ES, GB } from "country-flag-icons/react/3x2";
 import Text from "./Text.astro";
 import {
@@ -45,7 +45,7 @@ const isHome = stripLang(Astro.url.pathname) === "/";
         aria-controls="myTopnav"
         aria-expanded="false"
     >
-        <Icon name="menu" size={30} />
+        <MenuIcon width={30} height={30} aria-hidden="true" />
     </button>
 </nav>
 
