@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio.edugemen.es/sitemap.xml
+Sitemap: https://portfolio.edugemen.es/sitemap-index.xml

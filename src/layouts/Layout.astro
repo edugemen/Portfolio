@@ -33,11 +33,27 @@ const jsonLd = {
     name: "Eduardo Guerrero",
     url: site.href,
     jobTitle: getTranslation("info.dev", lang),
+    description: getTranslation("meta.description", lang),
+    image: image,
     sameAs: [
         "https://github.com/edugemen",
         "https://www.linkedin.com/in/edugemen/",
     ],
 };
+const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: getTranslation("nav.home", lang),
+            item: new URL(localizedPath("/", lang), site).href,
+        },
+        { "@type": "ListItem", position: 2, name: title, item: canonical },
+    ],
+};
+const otherLang = (Object.keys(languages) as Language[]).find((l) => l !== lang)!;
 ---
 
 <!doctype html>
@@ -47,6 +63,9 @@ const jsonLd = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+        <meta name="theme-color" content="#13151a" />
+        <meta name="author" content="Eduardo Guerrero" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
         <link rel="canonical" href={canonical} />
@@ -57,17 +76,23 @@ const jsonLd = {
         }
         <link rel="alternate" hreflang="x-default" href={urlFor("es")} />
 
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={home ? "profile" : "website"} />
+        <meta property="og:site_name" content="Eduardo Guerrero" />
         <meta property="og:url" content={canonical} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta property="og:image:alt" content={title} />
         <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+        <meta property="og:locale:alternate" content={otherLang === "es" ? "es_ES" : "en_US"} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        <meta name="twitter:image:alt" content={title} />
         <meta
             name="google-site-verification"
             content="i_MXlfiGK0q9pCFIarNrZQ5rka37d5JlBGKlEEhnekI"
@@ -76,6 +101,7 @@ const jsonLd = {
             {"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
         </script>
         {home && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+        {!home && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
     </head>
     <body>
         <a class="skip-link" href="#main">{getTranslation("nav.skip", lang)}</a>
