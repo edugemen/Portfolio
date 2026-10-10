@@ -104,8 +104,16 @@ let ICONS: {
 ---
 
 <section class="proj__section" id={"projects." + title}>
+    <a href={link} class="proj__link">
     <Card>
-        <img src={img} />
+        <img
+            src={img}
+            alt=""
+            width="1920"
+            height="1440"
+            loading="lazy"
+            decoding="async"
+        />
         <div class="proj__tecnologies">
             {
                 icons.map((aux: string) => {
@@ -137,15 +145,8 @@ let ICONS: {
             id={"projects.readmore"}
         />
     </Card>
+    </a>
 </section>
-
-<script define:vars={{ title, link }}>
-    const section = document.getElementById("projects." + title);
-
-    section.addEventListener("click", () => {
-        window.location.href = link;
-    });
-</script>
 
 <style>
     .proj__section {
@@ -153,6 +154,18 @@ let ICONS: {
         padding: 20px;
         gap: 20px;
         cursor: pointer;
+    }
+
+    .proj__link {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        border-radius: 15px;
+    }
+
+    .proj__link:focus-visible {
+        outline: 2px solid white;
+        outline-offset: 4px;
     }
 
     .proj__section:hover {

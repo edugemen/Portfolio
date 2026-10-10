@@ -3,12 +3,30 @@ import Text from "./Text";
 ---
 
 <form class="contact__form" method="POST">
-    <Text client:visible type="h4" id="contact.name" />
-    <input type="text" name="name" />
-    <Text client:visible type="h4" id="contact.email" />
-    <input type="email" name="mail" />
-    <Text client:visible type="h4" id="contact.message" />
-    <textarea name="message"></textarea>
+    <label for="contact__name">
+        <Text client:visible type="h4" id="contact.name" />
+    </label>
+    <input
+        type="text"
+        id="contact__name"
+        name="name"
+        autocomplete="name"
+        required
+    />
+    <label for="contact__mail">
+        <Text client:visible type="h4" id="contact.email" />
+    </label>
+    <input
+        type="email"
+        id="contact__mail"
+        name="mail"
+        autocomplete="email"
+        required
+    />
+    <label for="contact__message">
+        <Text client:visible type="h4" id="contact.message" />
+    </label>
+    <textarea id="contact__message" name="message" required></textarea>
     <button type="submit" id="contact__button">
         <Text client:visible type="h4" id="contact.send" />
     </button>
@@ -36,14 +54,19 @@ import Text from "./Text";
         button?.setAttribute("disabled", "true");
         button!.textContent = "Sending...";
 
-        emailjs.sendForm("service_4vlnrd5", "contact_form", form!).then(() => {
-            form!.reset();
-
-            button?.removeAttribute("disabled");
-            button!.textContent = "Send";
-
-            toast.success("Message sent!");
-        });
+        emailjs
+            .sendForm("service_4vlnrd5", "contact_form", form!)
+            .then(() => {
+                form!.reset();
+                toast.success("Message sent!");
+            })
+            .catch(() => {
+                toast.error("The message could not be sent.");
+            })
+            .finally(() => {
+                button?.removeAttribute("disabled");
+                button!.textContent = "Send";
+            });
     });
 </script>
 

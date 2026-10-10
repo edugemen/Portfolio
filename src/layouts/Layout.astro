@@ -74,6 +74,8 @@ const { title } = Astro.props;
                 document.querySelector("html")?.setAttribute("lang", lang);
             });
 
+            $selectedLanguage.set(lang);
+
             const cards = Array.from(
                 document.querySelectorAll(".card__container")
             );

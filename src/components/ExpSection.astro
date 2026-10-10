@@ -1,10 +1,19 @@
 ---
 import Text from "./Text";
+import { getTranslation } from "../lang/utils";
 const { img, title, empresa, date, description, link } = Astro.props;
+const size = Number(img.endsWith("dsecurity.jpg") ? 200 : img.includes("devfolio") ? 400 : 600);
 ---
 
 <section class="exp__section">
-    <img src={img} />
+    <img
+        src={img}
+        alt={getTranslation(empresa, "es")}
+        width={size}
+        height={size}
+        loading="lazy"
+        decoding="async"
+    />
     <div class="exp__text">
         <Text client:visible type="h2" className="primary" id={title} />
         <Text client:visible type="h3" id={empresa} />

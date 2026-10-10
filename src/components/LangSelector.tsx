@@ -7,7 +7,6 @@ function LangSelector() {
     const selectedLanguage = useStore($selectedLanguage);
 
     const toggleLang = () => {
-        console.log(selectedLanguage);
         if (selectedLanguage === "en") {
             $selectedLanguage.set("es");
         } else {
@@ -16,9 +15,18 @@ function LangSelector() {
     };
 
     return (
-        <button className="lang-selector" onClick={toggleLang}>
+        <button
+            type="button"
+            className="lang-selector"
+            onClick={toggleLang}
+            aria-label={
+                selectedLanguage === "en"
+                    ? "Language: English. Switch to Spanish"
+                    : "Idioma: Español. Cambiar a inglés"
+            }
+        >
             {/* {languages[selectedLanguage].flag} */}
-            {selectedLanguage === "en" ? <GB /> : <ES />}
+            {selectedLanguage === "en" ? <GB aria-hidden="true" /> : <ES aria-hidden="true" />}
         </button>
     );
 }
